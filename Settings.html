@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 
-<body class="dark">
+<body class="dark-theme">
   <div class="navbar">
     <a href="index.html" class="logo-button">
       <img src="path-to-your-logo.png" alt="Queen's Logo" class="logo-img"/>
@@ -71,16 +71,24 @@
       </div>
       <div class="collapsible-content">
         <div class="switch-row transparent">
-          <span class="switch-label">Choose Theme</span>
-          <div class="dropdown">
-            <button>Theme</button>
-            <div class="dropdown-content">
-              <a href="#" onclick="setTheme('light')">Light</a>
-              <a href="#" onclick="setTheme('dark')">Dark</a>
-            </div>
-          </div>
+          <div class="switch-row transparent">
+            <span class="switch-label">Choose Theme</span>
+            <select id="theme-selector" class="font-size-selector" onchange="setTheme(this.value)">
+              <option value="light">Light</option>
+              <option value="dark" selected>Dark</option>
+            </select>
+          </div>          
         </div>
-        <p>This is the content inside the box. You can place anything here.</p>
+
+        <div class="switch-row transparent">
+          <span class="switch-label">Font Size</span>
+          <select id="font-size-selector" class="font-size-selector">
+            <option value="small">Small</option>
+            <option value="medium" selected>Medium</option>
+            <option value="large">Large</option>
+          </select>
+        </div>
+
       </div>
     </div>
 

@@ -1,10 +1,255 @@
-/* Remove the default blue and underline from links */
+:root {
+  --bg-color: rgb(240, 240, 240);
+  --text-color: #2a2a2a;
+  --navbar-bg: #e0e0e0;
+  --sticky-bg: #d0d0d0;
+  --button-bg: #d3d3d3;
+  --dropdown-bg: #e4e4e4;
+  --hover-bg: #bdbdbd;
+  --font-size: 18px; /* Default root font size */
+}
+
+.dark-theme {
+  --bg-color: #333;
+  --text-color: #ffffff;
+  --navbar-bg: #444;
+  --sticky-bg: #555;
+  --button-bg: #666;
+  --dropdown-bg: #777;
+  --hover-bg: #888;
+}
+
+.light-theme {
+  --bg-color: rgb(240, 240, 240);
+  --text-color: #2a2a2a;
+  --navbar-bg: #e0e0e0;
+  --sticky-bg: #d0d0d0;
+  --button-bg: #d3d3d3;
+  --dropdown-bg: #e4e4e4;
+  --hover-bg: #bdbdbd;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-size: var(--font-size); /* Using root font size */
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--navbar-bg);
+  padding: 10px 20px;
+  z-index: 1000;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.nav-buttons button {
+  background-color: var(--button-bg);
+  color: var(--text-color);
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-buttons button:hover {
+  background-color: var(--hover-bg);
+}
+
+.sticky-bar {
+  position: fixed;
+  top: 55px;
+  width: 100%;
+  background-color: var(--sticky-bg);
+  color: var(--text-color);
+  padding: 10px;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+}
+
+.content {
+  padding-top: calc(55px + 6vi);
+  height: 100vh;
+  top: 10vi;
+}
+
+.collapsible-box {
+  margin: 2rem auto;
+  width: 90%;
+  max-width: 800px;
+  border-radius: 8px;
+  background-color: var(--dropdown-bg);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.collapsible-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--sticky-bg);
+  color: var(--text-color);
+  padding: 15px 20px;
+  cursor: pointer;
+}
+
+.box-title {
+  font-size: calc(var(--font-size) * 1); /* Adjust font size based on root */
+  font-weight: bold;
+}
+
+.collapse-toggle {
+  background-color: var(--button-bg);
+  color: var(--text-color);
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: calc(var(--font-size) * 1); /* Adjust font size */
+  cursor: pointer;
+}
+
+.collapse-toggle:hover {
+  background-color: var(--hover-bg);
+}
+
+.collapsible-content {
+  padding: 60px 20px;
+  background-color: var(--bg-color);
+  border-top: 1px solid var(--hover-bg);
+  transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.collapsible-content.hidden {
+  padding: 0 20px;
+  max-height: 0;
+  overflow: hidden;
+  border-top: none;
+}
+
+.switch-row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  font-size: calc(var(--font-size) * 1);
+  color: var(--text-color);
+}
+
+.switch-row.transparent {
+  background-color: transparent;
+  box-shadow: none;
+  border-radius: 0;
+  margin: 0;
+}
+
+.switch-label {
+  font-weight: 500;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  background-color: #ccc;
+  border-radius: 34px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: .4s;
+}
+
+.slider::before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: var(--hover-bg);
+}
+
+input:checked + .slider::before {
+  transform: translateX(22px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round::before {
+  border-radius: 50%;
+}
+
+.font-size-control {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: var(--button-bg);
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+.font-size-control label {
+  font-size: calc(var(--font-size) * 1);
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.font-size-selector {
+  padding: 5px 10px;
+  font-size: calc(var(--font-size) * 1);
+  border-radius: 4px;
+  background-color: var(--dropdown-bg);
+  color: var(--text-color);
+  border: none;
+}
+
+.font-size-selector:focus {
+  outline: none;
+  background-color: var(--hover-bg);
+}
+
 a {
   color: inherit;
   text-decoration: none;
 }
 
-/* Ensure that the dropdown content doesn't get cut off */
 .dropdown {
   position: relative;
   display: inline-block;
@@ -16,7 +261,7 @@ a {
   background-color: var(--dropdown-bg);
   min-width: 160px;
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-  z-index: 99999; /* Higher z-index to prevent being cut off */
+  z-index: 99999;
   border-radius: 5px;
   top: 100%;
   opacity: 0;
@@ -41,7 +286,6 @@ a {
   background-color: var(--hover-bg);
 }
 
-/* Style for the logo button */
 .logo-button {
   display: inline-block;
   padding: 5px;
@@ -54,226 +298,38 @@ a {
 }
 
 .logo-img {
-  width: 40px; /* Adjust size of your logo */
+  width: 40px;
   height: auto;
 }
 
-:root {
-    --bg-color: rgb(240, 240, 240);
-    --text-color: #2a2a2a;
-    --navbar-bg: #e0e0e0;
-    --sticky-bg: #d0d0d0;
-    --button-bg: #d3d3d3;
-    --dropdown-bg: #e4e4e4;
-    --hover-bg: #bdbdbd;
+.theme-button {
+  background-color: var(--button-bg);
+  color: var(--text-color);
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: calc(var(--font-size) * 1);
+  display: inline-block;
+  transition: background-color 0.3s ease;
 }
 
-.dark-theme {
-    --bg-color: #333;
-    --text-color: #ffffff;
-    --navbar-bg: #444;
-    --sticky-bg: #555;
-    --button-bg: #666;
-    --dropdown-bg: #777;
-    --hover-bg: #888;
+.theme-button:hover {
+  background-color: var(--hover-bg);
 }
 
-.light-theme {
-    --bg-color: rgb(240, 240, 240);
-    --text-color: #2a2a2a;
-    --navbar-bg: #e0e0e0;
-    --sticky-bg: #d0d0d0;
-    --button-bg: #d3d3d3;
-    --dropdown-bg: #e4e4e4;
-    --hover-bg: #bdbdbd;
+.font-size-button {
+  background-color: var(--button-bg);
+  color: var(--text-color);
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: calc(var(--font-size) * 1);
+  display: inline-block;
+  transition: background-color 0.3s ease;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    min-height: 100vh;
-    overflow-x: hidden;
-}
-
-.navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--navbar-bg);
-    padding: 10px 20px;
-    z-index: 1000;
-}
-
-.nav-buttons {
-    display: flex;
-    gap: 10px;
-}
-
-.nav-buttons button {
-    background-color: var(--button-bg);
-    color: var(--text-color);
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.nav-buttons button:hover {
-    background-color: var(--hover-bg);
-}
-
-.sticky-bar {
-    position: fixed;
-    top: 55px;
-    width: 100%;
-    background-color: var(--sticky-bg);
-    color: var(--text-color);
-    padding: 10px;
-    z-index: 999;
-    display: flex;
-    justify-content: center;
-}
-
-.content {
-    padding-top: calc(55px + 6vi);
-    height: 100vh;
-    top: 10vi;
-}
-
-.collapsible-box {
-    margin: 2rem auto;
-    width: 90%;
-    max-width: 800px;
-    border-radius: 8px;
-    background-color: var(--dropdown-bg);
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    overflow: hidden;
-    transition: all 0.3s ease;
-}
-
-.collapsible-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--sticky-bg);
-    color: var(--text-color);
-    padding: 15px 20px;
-    cursor: pointer;
-}
-
-.box-title {
-    font-size: 1.2rem;
-    font-weight: bold;
-}
-
-.collapse-toggle {
-    background-color: var(--button-bg);
-    color: var(--text-color);
-    border: none;
-    padding: 6px 12px;
-    border-radius: 4px;
-    font-size: 1rem;
-    cursor: pointer;
-}
-
-.collapse-toggle:hover {
-    background-color: var(--hover-bg);
-}
-
-.collapsible-content {
-    padding: 20px;
-    background-color: var(--bg-color);
-    border-top: 1px solid var(--hover-bg);
-    transition: max-height 0.3s ease, padding 0.3s ease;
-}
-
-.collapsible-content.hidden {
-    padding: 0 20px;
-    max-height: 0;
-    overflow: hidden;
-    border-top: none;
-}
-
-.switch-row {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0;
-    font-size: 1rem;
-    color: var(--text-color);
-}
-
-.switch-row.transparent {
-    background-color: transparent;
-    box-shadow: none;
-    border-radius: 0;
-    margin: 0;
-}
-
-.switch-label {
-    font-weight: 500;
-}
-
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 50px;
-    height: 28px;
-}
-
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-.slider {
-    position: absolute;
-    cursor: pointer;
-    background-color: #ccc;
-    border-radius: 34px;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    transition: .4s;
-}
-
-.slider::before {
-    position: absolute;
-    content: "";
-    height: 22px;
-    width: 22px;
-    left: 3px;
-    bottom: 3px;
-    background-color: white;
-    transition: .4s;
-    border-radius: 50%;
-}
-
-input:checked + .slider {
-    background-color: var(--hover-bg);
-}
-
-input:checked + .slider::before {
-    transform: translateX(22px);
-}
-
-.slider.round {
-    border-radius: 34px;
-}
-
-.slider.round::before {
-    border-radius: 50%;
+.font-size-button:hover {
+  background-color: var(--hover-bg);
 }
