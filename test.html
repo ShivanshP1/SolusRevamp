@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Queen's Portal</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="dark-theme">
+  <div class="navbar">
+    <a href="index.html" class="logo-button">
+      <img src="path-to-your-logo.png" alt="Queen's Logo" class="logo-img"/>
+    </a>
+    <div class="nav-buttons">
+      <button>Notifications</button>
+      <button>Profile</button>
+      <button>Settings</button>
+    </div>
+  </div>
+
+  <div class="sticky-bar">
+    <div class="nav-buttons">
+      <div class="dropdown">
+        <button>Classes</button>
+        <div class="dropdown-content">
+          <a href="#">Course History</a>
+          <a href="#">My Classes</a>
+          <a href="#">Future planning</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button>Finance</button>
+        <div class="dropdown-content">
+          <a href="#">My Account</a>
+          <a href="#">Payment Options</a>
+          <a href="#">Financial Aid</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button>Calendar</button>
+        <div class="dropdown-content">
+          <a href="#">Due dates and deadlines</a>
+          <a href="#">Advance Calendar</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button>Records</button>
+        <div class="dropdown-content">
+          <a href="#">Transcript</a>
+          <a href="#">Verification of Enrollment</a>
+          <a href="#">Tax forms</a>
+          <a href="#">OSAP Tuition form</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button>Help</button>
+        <div class="dropdown-content">
+          <a href="#">FAQ</a>
+          <a href="#">Support</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+
+
+
+    <div class="collapsible-box">
+        <div class="collapsible-header">
+          <div class="box-title">Personal Information</div>
+          <button class="collapse-toggle" onclick="toggleBox(this)">−</button>
+        </div>
+        <div class="collapsible-content">
+          <div class="switch-row transparent">
+            <span class="switch-label">Name</span>
+            <label class="switch">
+               <div>Aira lee</div>
+            </label>
+          </div>
+          <div class="switch-row transparent">
+            <span class="switch-label">Date of Birth</span>
+            <label class="switch">
+               <div>2004/03/25</div>
+            </label>
+          </div>
+          <div class="switch-row transparent">
+            <span class="switch-label">Social Insurance Number</span>
+            <label class="switch">
+               <div>*****1234</div>
+            </label>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="collapsible-box">
+        <div class="collapsible-header">
+          <div class="box-title">Contact Details</div>
+          <button class="collapse-toggle" onclick="toggleBox(this)">−</button>
+        </div>
+        <div class="collapsible-content">
+
+          <div class="settings-box">
+            <div class="settings-header">Email Preferences</div>
+          
+            <div class="settings-row">
+              <span class="settings-label">Primary Email</span>
+              <span class="settings-text">Enabled</span>
+            </div>
+          
+            <div class="settings-row">
+              <span class="settings-label">Secondary Email</span>
+              <span class="settings-label">Secondary Email</span>
+              <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+              </label>
+            </div>
+          
+            <div class="settings-row">
+              <span class="settings-label">Receive Notifications</span>
+              <span class="settings-text">Enabled</span>
+              <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
+          
+          
+          
+
+
+        </div>
+      </div>
+ 
+      <div class="collapsible-box">
+        <div class="collapsible-header">
+          <div class="box-title">Emergency Contacts</div>
+          <button class="collapse-toggle" onclick="toggleBox(this)">−</button>
+        </div>
+        <div class="collapsible-content">
+          <div class="switch-row transparent">
+            <span class="switch-label">Mira lee</span>
+            <label class="switch">
+               <div>647-1234-567</div>
+            </label>
+          </div>
+     
+          
+
+
+
+        </div>
+      </div>
+
+
+    </div>  
+
+  <script src="script.js"></script>
+</body>
+</html>

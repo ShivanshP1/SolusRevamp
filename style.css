@@ -1,12 +1,11 @@
 :root {
-  --bg-color: rgb(240, 240, 240);
-  --text-color: #2a2a2a;
-  --navbar-bg: #e0e0e0;
-  --sticky-bg: #d0d0d0;
-  --button-bg: #d3d3d3;
-  --dropdown-bg: #e4e4e4;
-  --hover-bg: #bdbdbd;
-  --font-size: 18px; /* Default root font size */
+  --bg-color: #333;
+  --text-color: #ffffff;
+  --navbar-bg: #444;
+  --sticky-bg: #555;
+  --button-bg: #666;
+  --dropdown-bg: #777;
+  --hover-bg: #888;
 }
 
 .dark-theme {
@@ -41,6 +40,7 @@ body {
 .navbar {
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -53,6 +53,7 @@ body {
 .nav-buttons {
   display: flex;
   gap: 10px;
+  margin-right: 1.5%;
 }
 
 .nav-buttons button {
@@ -72,6 +73,7 @@ body {
 .sticky-bar {
   position: fixed;
   top: 55px;
+  left: 0;
   width: 100%;
   background-color: var(--sticky-bg);
   color: var(--text-color);
@@ -83,8 +85,9 @@ body {
 
 .content {
   padding-top: calc(55px + 6vi);
-  height: 100vh;
-  top: 10vi;
+  padding-bottom: 10%;
+  /* height: calc(10vi + 100%); */
+  width: 100%;
 }
 
 .collapsible-box {
@@ -109,7 +112,7 @@ body {
 }
 
 .box-title {
-  font-size: calc(var(--font-size) * 1); /* Adjust font size based on root */
+  font-size: calc(var(--font-size) * 1);
   font-weight: bold;
 }
 
@@ -119,7 +122,7 @@ body {
   border: none;
   padding: 6px 12px;
   border-radius: 4px;
-  font-size: calc(var(--font-size) * 1); /* Adjust font size */
+  font-size: calc(var(--font-size) * 1);
   cursor: pointer;
 }
 
@@ -128,7 +131,9 @@ body {
 }
 
 .collapsible-content {
-  padding: 60px 20px;
+  padding-left: 1vh;
+  padding-right: 1vh;
+  padding-bottom: 2vh;
   background-color: var(--bg-color);
   border-top: 1px solid var(--hover-bg);
   transition: max-height 0.3s ease, padding 0.3s ease;
@@ -332,4 +337,66 @@ a {
 
 .font-size-button:hover {
   background-color: var(--hover-bg);
+
 }
+
+
+.settings-box {
+  width: inherit; /* Inherit width from parent */
+  background-color: var(--bg-color);
+  border-radius: 8px;
+  padding: 15px;
+}
+
+.settings-header {
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px;
+  background-color: var(--sticky-bg);
+  color: var(--text-color);
+  border-radius: 5px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.settings-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  gap: 3em; /* Adds 1em space between the items */
+}
+
+.settings-label {
+  flex: 2; /* Left label takes a bit more space */
+  text-align: left;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.text-input, .settings-text {
+  flex: 3; /* Center element takes moderate space */
+  max-width: 250px; /* Prevents it from taking too much space */
+  text-align: center;
+  padding: 5px;
+  border: 1px solid var(--hover-bg);
+  border-radius: 4px;
+  background-color: var(--button-bg);
+  color: var(--text-color);
+  margin: 0 auto; /* Center the input field */
+}
+
+.text-input:focus {
+  outline: none;
+  background-color: var(--hover-bg);
+}
+
+.switch {
+  flex: 0 0 auto; /* Only takes the necessary space */
+  display: flex;
+  justify-content: flex-end;
+}
+.settings-text input[type="radio"] {
+  margin-right: 10px; /* Space between the radio buttons */
+}
+
