@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Queen's Portal</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="dark-theme">
+  <div class="navbar">
+    <a href="index.html" class="logo-button">
+      <img src="path-to-your-logo.png" alt="Queen's Logo" class="logo-img"/>
+    </a>
+    <div class="nav-buttons">
+      <button>Notifications</button>
+      <button>Profile</button>
+      <button><a href="Settings.html">Settings</a></button>
+    </div>
+  </div>
+
+  <div class="sticky-bar">
+    <div class="nav-buttons">
+      <div class="dropdown">
+        <button>Classes</button>
+        <div class="dropdown-content">
+          <a href="#">Course History</a>
+          <a href="#">My Classes</a>
+          <a href="#">Future planning</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button>Finance</button>
+        <div class="dropdown-content">
+          <a href="#">My Account</a>
+          <a href="#">Payment Options</a>
+          <a href="#">Financial Aid</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button>Calendar</button>
+        <div class="dropdown-content">
+          <a href="#">Due dates and deadlines</a>
+          <a href="#">Advance Calendar</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button>Records</button>
+        <div class="dropdown-content">
+          <a href="#">Transcript</a>
+          <a href="#">Verification of Enrollment</a>
+          <a href="#">Tax forms</a>
+          <a href="#">OSAP Tuition form</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button>Help</button>
+        <div class="dropdown-content">
+          <a href="#">FAQ</a>
+          <a href="#">Support</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <div class="progress-container">
+        <div class="progress-bar" id="progress-bar" style="width: 50%;">16%</div>
+    </div>
+    <div class="progress-content-box">
+        <div class="progress-content-header" onclick="toggleProgressContent()">Details</div>
+        <div class="progress-content" id="progress-content">
+            <span class="settings-text"><b>Total Credits: 12.00/48.00</b></span> <div class="settings-spacer">−</div>
+            <span class="settings-text"><b>Electives: 3.00/12.00</b></span> <div class="settings-spacer">−</div>
+            <span class="settings-text"><b>Type A Credit: 0.00/6.00</b></span> <div class="settings-spacer">−</div>
+            <span class="settings-text"><b>Type B Credit: 0.00/4.00</b></span> 
+        </div>
+    </div>
+    
+    
+    
+
+
+    <div class="collapsible-box large">
+        <div class="collapsible-header">
+          <div class="box-title">Core Courses</div>
+          <button class="collapse-toggle" onclick="toggleBox(this)">−</button>
+        </div>
+
+        <div class="collapsible-content">
+          <div class="settings-box">      
+            <div class="settings-header">First Year</div>
+            <div class="settings-row">
+                <span class="settings-text"><b>Code</b></span>
+                <div class="settings-spacer">−</div>
+                <span class="settings-text"><b>Course</b></span>
+                <div class="settings-spacer">−</div>
+                <span class="settings-text"><b>Grade</b></span>
+                <div class="settings-spacer">−</div>
+                <span class="settings-text"><b>Credits</b></span>
+                <div class="settings-spacer">−</div>
+                <span class="settings-text"><b>Status</b></span>
+            </div>   
+            <div class="settings-row">
+                <span class="settings-text">APSC 101</span>
+                <div class="settings-spacer">−</div>
+                <span class="settings-text">Engineering Design & Practice</span>
+                <div class="settings-spacer">−</div>
+                <span class="settings-text">A-</span>
+                <div class="settings-spacer">−</div>
+                <span class="settings-text">3.50</span>
+                <div class="settings-spacer">−</div>
+                <span class="settings-text">Taken</span>
+            </div>  
+            <div class="settings-row">
+                <span class="settings-text">APSC 102</span>
+                <div class="settings-spacer">−</div>
+                <span class="settings-text">Experimentation</span>
+                <div class="settings-spacer">−</div>
+                <span class="settings-text">A+</span>
+                <div class="settings-spacer">−</div>
+                <span class="settings-text">2.00</span>
+                <div class="settings-spacer">−</div>
+                <span class="settings-text">Taken</span>
+            </div>  
+            <div class="settings-row">
+                <span class="settings-text">APSC 103</span>
+                <div class="settings-spacer">−</div>
+                <span class="settings-text">Eng Client Based Design Project</span><div class="settings-spacer">−</div>
+                <span class="settings-text">A</span><div class="settings-spacer">−</div>
+                <span class="settings-text">3.50</span><div class="settings-spacer">−</div>
+                <span class="settings-text">Taken</span>
+            </div>  
+            <div class="settings-row">
+                <span class="settings-text">APSC 111</span><div class="settings-spacer">−</div>
+                <span class="settings-text">Physics I</span><div class="settings-spacer">−</div>
+                <span class="settings-text">A−</span><div class="settings-spacer">−</div>
+                <span class="settings-text">3.30</span><div class="settings-spacer">−</div>
+                <span class="settings-text">Taken</span>
+            </div>  
+            <div class="settings-row">
+                <span class="settings-text">APSC 112</span><div class="settings-spacer">−</div>
+                <span class="settings-text">Physics II</span><div class="settings-spacer">−</div>
+                <span class="settings-text">−</span><div class="settings-spacer">−</div>
+                <span class="settings-text">3.30</span><div class="settings-spacer">−</div>
+                <span class="settings-text">In Progress</span>
+            </div>  
+            <div class="settings-row">
+                <span class="settings-text">APSC 131</span><div class="settings-spacer">−</div>
+                <span class="settings-text">Chemistry I</span><div class="settings-spacer">−</div>
+                <span class="settings-text">C-</span><div class="settings-spacer">−</div>
+                <span class="settings-text">3.30</span><div class="settings-spacer">−</div>
+                <span class="settings-text">Taken</span>
+            </div>  
+            <div class="settings-row">
+                <span class="settings-text">APSC 132</span><div class="settings-spacer">−</div>
+                <span class="settings-text">Chemistry II</span><div class="settings-spacer">−</div>
+                <span class="settings-text">−</span><div class="settings-spacer">−</div>
+                <span class="settings-text">3.30</span><div class="settings-spacer">−</div>
+                <span class="settings-text">In Progress</span>
+            </div>   
+            <div class="settings-row">
+                <span class="settings-text">APSC 143</span><div class="settings-spacer">−</div>
+                <span class="settings-text">Intro to Computer Programming</span><div class="settings-spacer">−</div>
+                <span class="settings-text">−</span><div class="settings-spacer">−</div>
+                <span class="settings-text">3.30</span><div class="settings-spacer">−</div>
+                <span class="settings-text">In Progress</span>
+            </div>   
+            <div class="settings-row">
+                <span class="settings-text">APSC 151</span><div class="settings-spacer">−</div>
+                <span class="settings-text">Earth System Engieering</span><div class="settings-spacer">−</div>
+                <span class="settings-text">B-</span><div class="settings-spacer">−</div>
+                <span class="settings-text">3.30</span><div class="settings-spacer">−</div>
+                <span class="settings-text">Taken</span>
+            </div> 
+            <div class="settings-row">
+                <span class="settings-text">APSC 162</span><div class="settings-spacer">−</div>
+                <span class="settings-text">Engineering Graphics</span><div class="settings-spacer">−</div>
+                <span class="settings-text">−</span><div class="settings-spacer">−</div>
+                <span class="settings-text">2.50</span><div class="settings-spacer">−</div>
+                <span class="settings-text">In Progress</span>
+            </div>   
+            <div class="settings-row">
+                <span class="settings-text">APSC 171</span><div class="settings-spacer">−</div>
+                <span class="settings-text">Calculus I</span><div class="settings-spacer">−</div>
+                <span class="settings-text">B+</span><div class="settings-spacer">−</div>
+                <span class="settings-text">3.30</span><div class="settings-spacer">−</div>
+                <span class="settings-text">Taken</span>
+            </div>   
+            <div class="settings-row">
+                <span class="settings-text">APSC 172</span><div class="settings-spacer">−</div>
+                <span class="settings-text">Calculus II</span><div class="settings-spacer">−</div>
+                <span class="settings-text">−</span><div class="settings-spacer">−</div>
+                <span class="settings-text">3.30</span><div class="settings-spacer">−</div>
+                <span class="settings-text">In Progress</span>
+            </div>  
+
+            <div class="settings-header">Second Year</div> 
+            <div class="settings-row">
+                <span class="settings-text"><b>Code</b></span><div class="settings-spacer">−</div>
+                <span class="settings-text"><b>Course</b></span><div class="settings-spacer">−</div>
+                <span class="settings-text"><b>Grade</b></span><div class="settings-spacer">−</div>
+                <span class="settings-text"><b>Credits</b></span><div class="settings-spacer">−</div>
+                <span class="settings-text"><b>Status</b></span>
+            </div>   
+            <div class="settings-row">
+                <span class="settings-text">MTHE 235</span><div class="settings-spacer">−</div>
+                <span class="settings-text">Diff Equations For ELEC & Comp</span><div class="settings-spacer">−</div>
+                <span class="settings-text">−</span><div class="settings-spacer">−</div>
+                <span class="settings-text">3.50</span><div class="settings-spacer">−</div>
+                <span class="settings-text">Planned</span>
+            </div>              
+            <div class="settings-row">
+                <span class="settings-text">ELEC 221</span><div class="settings-spacer">−</div>
+                <span class="settings-text">Electric Circuits</span><div class="settings-spacer">−</div>
+                <span class="settings-text">−</span><div class="settings-spacer">−</div>
+                <span class="settings-text">4.25</span><div class="settings-spacer">−</div>
+                <span class="settings-text">Planned</span>
+            </div>               
+            <div class="settings-row">
+                <span class="settings-text">ELEC 221</span><div class="settings-spacer">−</div>
+                <span class="settings-text">Electric Circuits</span><div class="settings-spacer">−</div>
+                <span class="settings-text">−</span><div class="settings-spacer">−</div>
+                <span class="settings-text">4.25</span><div class="settings-spacer">−</div>
+                <span class="settings-text">Planned</span>
+            </div>  
+            <div class="settings-row">
+                <span class="settings-text">ELEC 270</span><div class="settings-spacer">−</div>
+                <span class="settings-text">Discrete Math W. Comp Eng Appl</span><div class="settings-spacer">−</div>
+                <span class="settings-text">−</span><div class="settings-spacer">−</div>
+                <span class="settings-text">3.50</span><div class="settings-spacer">−</div>
+                <span class="settings-text">Planned</span>
+            </div>  
+            <div class="settings-row">
+                <span class="settings-text">ELEC 274</span><div class="settings-spacer">−</div>
+                <span class="settings-text">Computer Architecture</span><div class="settings-spacer">−</div>
+                <span class="settings-text">−</span><div class="settings-spacer">−</div>
+                <span class="settings-text">4.00</span><div class="settings-spacer">−</div>
+                <span class="settings-text">Planned</span>
+            </div>  
+            <div class="settings-row">
+                <span class="settings-text">ELEC 279</span><div class="settings-spacer">−</div>
+                <span class="settings-text">Object Oriented Programming</span><div class="settings-spacer">−</div>
+                <span class="settings-text">−</span><div class="settings-spacer">−</div>
+                <span class="settings-text">4.00</span><div class="settings-spacer">−</div>
+                <span class="settings-text">Planned</span>
+            </div>
+            <div class="settings-row">
+                <span class="settings-text">ELEC 280</span><div class="settings-spacer">−</div>
+                <span class="settings-text">Fund. Of Electromagnetics</span><div class="settings-spacer">−</div>
+                <span class="settings-text">−</span><div class="settings-spacer">−</div>
+                <span class="settings-text">3.75</span><div class="settings-spacer">−</div>
+                <span class="settings-text">Planned</span>
+            </div>  
+            <div class="settings-row">
+                <span class="settings-text">ELEC 290</span><div class="settings-spacer">−</div>
+                <span class="settings-text">ECE Design and Practice</span><div class="settings-spacer">−</div>
+                <span class="settings-text">−</span><div class="settings-spacer">−</div>
+                <span class="settings-text">5.00</span><div class="settings-spacer">−</div>
+                <span class="settings-text">Planned</span>
+            </div>  
+            <div class="settings-row">
+                <span class="settings-text">ELEC 292</span><div class="settings-spacer">−</div>
+                <span class="settings-text">Introduction to Data Science</span><div class="settings-spacer">−</div>
+                <span class="settings-text">−</span><div class="settings-spacer">−</div>
+                <span class="settings-text">3.00</span><div class="settings-spacer">−</div>
+                <span class="settings-text">Planned</span>
+            </div>  
+        </div>
+      </div>       
+    </div>
+
+
+    <div class="collapsible-box large">
+        <div class="collapsible-header">
+          <div class="box-title">Electives</div>
+          <button class="collapse-toggle" onclick="toggleBox(this)">−</button>
+        </div>
+
+        <div class="collapsible-content">
+          <div class="settings-box">  
+            <div class="settings-row">
+                <span class="settings-text">CMPE 325</span><div class="settings-spacer">−</div>
+                <span class="settings-text">Human-Computer Interaction</span><div class="settings-spacer">−</div>
+                <span class="settings-text">−</span><div class="settings-spacer">−</div>
+                <span class="settings-text">3.00</span><div class="settings-spacer">−</div>
+                <span class="settings-text">In Progress</span>
+            </div>    
+        </div>
+      </div>       
+    </div>
+
+</div>  
+
+  <script src="script.js"></script>
+</body>
+</html>

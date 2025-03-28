@@ -1,15 +1,15 @@
 :root {
-  --bg-color: #333;
-  --text-color: #ffffff;
-  --navbar-bg: #444;
-  --sticky-bg: #555;
-  --button-bg: #666;
-  --dropdown-bg: #777;
-  --hover-bg: #888;
+  --bg-color: rgb(240, 240, 240);
+  --text-color: #2a2a2a;
+  --navbar-bg: #e0e0e0;
+  --sticky-bg: #d0d0d0;
+  --button-bg: #d3d3d3;
+  --dropdown-bg: #e4e4e4;
+  --hover-bg: #bdbdbd;
 }
 
 .dark-theme {
-  --bg-color: #333;
+  --bg-color: rgb(61, 61, 61);
   --text-color: #ffffff;
   --navbar-bg: #444;
   --sticky-bg: #555;
@@ -29,12 +29,14 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  min-height: 100vh;
-  overflow-x: hidden;
-  font-size: var(--font-size); /* Using root font size */
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
 }
 
 .navbar {
@@ -99,6 +101,16 @@ body {
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
   overflow: hidden;
   transition: all 0.3s ease;
+}
+
+.collapsible-box.large { 
+  max-width: 80%; 
+}
+
+
+.collapsible-box:not(.large) {
+  width: 90%; 
+  max-width: 800px;
 }
 
 .collapsible-header {
@@ -342,7 +354,7 @@ a {
 
 
 .settings-box {
-  width: inherit; /* Inherit width from parent */
+  width: inherit; 
   background-color: var(--bg-color);
   border-radius: 8px;
   padding: 15px;
@@ -351,7 +363,8 @@ a {
 .settings-header {
   font-size: 18px;
   font-weight: bold;
-  padding: 10px;
+  padding: 1%;
+  margin-top: 2%;
   background-color: var(--sticky-bg);
   color: var(--text-color);
   border-radius: 5px;
@@ -364,26 +377,34 @@ a {
   align-items: center;
   justify-content: space-between;
   padding: 8px 0;
-  gap: 3em; /* Adds 1em space between the items */
+  gap: 3em; 
 }
 
 .settings-label {
-  flex: 2; /* Left label takes a bit more space */
+  flex: 2; 
   text-align: left;
   font-weight: bold;
   color: var(--text-color);
 }
 
+.settings-spacer {
+  flex: 0 0 auto; 
+  text-align: center;
+  font-weight: bold;
+  width: fit-content;
+  color: var(--text-color);
+}
+
 .text-input, .settings-text {
-  flex: 3; /* Center element takes moderate space */
-  max-width: 250px; /* Prevents it from taking too much space */
+  flex: 3; 
+  max-width: 250px;
   text-align: center;
   padding: 5px;
   border: 1px solid var(--hover-bg);
   border-radius: 4px;
   background-color: var(--button-bg);
   color: var(--text-color);
-  margin: 0 auto; /* Center the input field */
+  margin: 0 auto; 
 }
 
 .text-input:focus {
@@ -392,11 +413,533 @@ a {
 }
 
 .switch {
-  flex: 0 0 auto; /* Only takes the necessary space */
+  flex: 0 0 auto; 
   display: flex;
   justify-content: flex-end;
 }
 .settings-text input[type="radio"] {
-  margin-right: 10px; /* Space between the radio buttons */
+  margin-right: 10px; 
 }
 
+
+.progress-container {
+  width: 90%;
+  max-width: 800px;
+  height: 30px;
+  background-color: var(--dropdown-bg);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 20px auto;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: var(--hover-bg);
+  color: var(--text-color);
+  text-align: center;
+  line-height: 30px;
+  font-weight: bold;
+  transition: width 0.3s ease;
+}
+
+.progress-header {
+  text-align: center;
+  font-size: calc(var(--font-size) * 1.2);
+  font-weight: bold;
+  color: var(--text-color);
+  margin-top: 10px;
+}
+
+.progress-content-box {
+  width: 90%;
+  max-width: 50%;
+  margin: 10px auto;
+  border-radius: 8px;
+  background-color: var(--dropdown-bg);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.progress-content-header {
+  text-align: center;
+  font-size: calc(var(--font-size) * 1);
+  font-weight: bold;
+  padding: 10px;
+  background-color: var(--sticky-bg);
+  color: var(--text-color);
+  cursor: pointer;
+}
+.progress-content {
+  display: flex;
+  justify-content: space-evenly; /* Distributes space evenly */
+  align-items: center;
+  flex-wrap: wrap; /* Ensures responsiveness */
+  padding: 10px;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  border-top: 1px solid var(--hover-bg);
+}
+
+.progress-content .settings-text {
+  flex: 1; 
+  min-width: 150px; 
+  text-align: center;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+
+.progress-content.show {
+  display: block;
+}
+
+/* Calendar-specific styles with unique class names to prevent conflicts */
+.calendar-page-container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: calc(55px + 6vi);
+  width: 100%;
+}
+
+.calendar-main-container {
+  max-width: 1200px;
+  width: 195%;
+  margin: 20px auto;
+  background-color: var(--dropdown-bg);
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  align-content: center;
+}
+
+.calendar-header {
+  background-color: var(--sticky-bg);
+  color: var(--text-color);
+  padding: 15px;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: 180px repeat(5, 1fr);
+  grid-template-rows: 50px;
+  grid-auto-rows: 60px;
+  gap: 1px;
+  background-color: var(--hover-bg);
+}
+
+.calendar-time-header, 
+.calendar-day-header {
+  background-color: var(--navbar-bg);
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  padding: 5px;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  min-width: 180px;
+}
+
+.calendar-time-slot {
+  background-color: var(--bg-color);
+  border-bottom: 1px solid var(--hover-bg);
+  padding: 2px;
+  position: relative;
+  min-height: 60px;
+}
+
+.calendar-course-event {
+  position: absolute;
+  border-radius: 4px;
+  padding: 8px;
+  font-size: 0.75em;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid;
+  cursor: pointer;
+  transition: transform 0.2s;
+  box-sizing: border-box;
+  width: calc(100% - 10px);
+  left: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--button-bg);
+  color: var(--text-color);
+}
+
+.calendar-course-event:hover {
+  transform: scale(1.02);
+  z-index: 10;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+  background-color: var(--hover-bg);
+}
+
+.calendar-course-code {
+  font-weight: bold;
+  margin-bottom: 2px;
+  font-size: 0.9em;
+}
+
+.calendar-course-time {
+  font-size: 0.7em;
+  opacity: 0.9;
+  margin-bottom: 2px;
+}
+
+.calendar-course-location {
+  font-size: 0.8em;
+  font-weight: 500;
+}
+
+.calendar-course-type {
+  font-style: italic;
+  font-size: 0.7em;
+  margin-bottom: 3px;
+}
+
+.calendar-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  width: 90%;
+  max-width: 1000px;
+}
+
+.calendar-filter-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.calendar-select, 
+.calendar-button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--button-bg);
+  color: var(--text-color);
+  cursor: pointer;
+  font-size: 0.9em;
+}
+
+.calendar-select:hover, 
+.calendar-button:hover {
+  background-color: var(--hover-bg);
+}
+
+.calendar-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  justify-content: center;
+  align-items: center;
+}
+
+.calendar-modal-content {
+  background-color: var(--dropdown-bg);
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 90%;
+  color: var(--text-color);
+}
+
+.calendar-close-modal {
+  float: right;
+  cursor: pointer;
+  font-size: 1.5em;
+}
+
+.calendar-event-details {
+  margin-top: 20px;
+}
+
+.calendar-event-detail {
+  margin-bottom: 10px;
+}
+
+.calendar-event-detail-label {
+  font-weight: bold;
+  display: inline-block;
+  width: 100px;
+}
+
+@media print {
+  .calendar-page-container {
+      background-color: white;
+      padding: 0;
+  }
+  .calendar-controls {
+      display: none;
+  }
+  .calendar-main-container {
+      box-shadow: none;
+      border-radius: 0;
+  }
+}
+
+/* Use your existing CSS variables */
+:root {
+  --bg-color: rgb(240, 240, 240);
+  --text-color: #2a2a2a;
+  --navbar-bg: #e0e0e0;
+  --sticky-bg: #d0d0d0;
+  --button-bg: #d3d3d3;
+  --dropdown-bg: #e4e4e4;
+  --hover-bg: #bdbdbd;
+}
+
+.dark-theme {
+  --bg-color: rgb(61, 61, 61);
+  --text-color: #ffffff;
+  --navbar-bg: #444;
+  --sticky-bg: #555;
+  --button-bg: #666;
+  --dropdown-bg: #777;
+  --hover-bg: #888;
+}
+
+/* Shopping cart specific styles - prefixed to avoid conflicts */
+.sc-body {
+  font-family: Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  min-height: 100vh;
+  margin: 0;
+  padding-top: calc(55px + 3vi); /* Account for your navbar */
+}
+
+.sc-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.sc-header {
+  background-color: var(--navbar-bg);
+  color: var(--text-color);
+  padding: 20px 0;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.sc-course-container {
+  display: flex;
+  gap: 20px;
+}
+
+.sc-course-list {
+  flex: 2;
+}
+
+.sc-cart {
+  flex: 1;
+  background-color: var(--dropdown-bg);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: calc(55px + 6vi + 20px); /* Below your sticky header */
+  height: fit-content;
+}
+
+.sc-course-card {
+  background-color: var(--dropdown-bg);
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.sc-course-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.sc-course-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.sc-course-code {
+  font-weight: bold;
+  color: var(--text-color);
+  font-size: 1.2em;
+}
+
+.sc-course-credits {
+  background-color: var(--button-bg);
+  color: var(--text-color);
+  padding: 3px 8px;
+  border-radius: 5px;
+  font-size: 0.9em;
+}
+
+.sc-course-title {
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 1.1em;
+}
+
+.sc-course-description {
+  color: var(--text-color);
+  opacity: 0.8;
+  margin-bottom: 10px;
+  font-size: 0.9em;
+}
+
+.sc-course-terms {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.sc-term-badge {
+  padding: 3px 8px;
+  border-radius: 5px;
+  font-size: 0.8em;
+  background-color: var(--button-bg);
+}
+
+.sc-term-fall {
+  background-color: #e67e22;
+  color: white;
+}
+
+.sc-term-winter {
+  background-color: #3498db;
+  color: white;
+}
+
+.sc-term-summer {
+  background-color: #2ecc71;
+  color: white;
+}
+
+.sc-add-to-cart {
+  background-color: var(--hover-bg);
+  color: var(--text-color);
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.sc-add-to-cart:hover {
+  background-color: var(--sticky-bg);
+}
+
+.sc-remove-from-cart {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.sc-remove-from-cart:hover {
+  background-color: #c0392b;
+}
+
+.sc-cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--button-bg);
+}
+
+.sc-cart-item:last-child {
+  border-bottom: none;
+}
+
+.sc-cart-total {
+  font-weight: bold;
+  text-align: right;
+  margin-top: 15px;
+  font-size: 1.2em;
+}
+
+.sc-checkout-btn {
+  background-color: var(--sticky-bg);
+  color: var(--text-color);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 100%;
+  margin-top: 15px;
+  transition: background-color 0.2s;
+}
+
+.sc-checkout-btn:hover {
+  background-color: var(--hover-bg);
+}
+
+.sc-search-filter {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.sc-search-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid var(--button-bg);
+  border-radius: 5px;
+  background-color: var(--dropdown-bg);
+  color: var(--text-color);
+}
+
+.sc-term-filter {
+  padding: 10px;
+  border: 1px solid var(--button-bg);
+  border-radius: 5px;
+  background-color: var(--dropdown-bg);
+  color: var(--text-color);
+}
+
+.sc-empty-cart {
+  text-align: center;
+  color: var(--text-color);
+  opacity: 0.6;
+  padding: 20px;
+}
+
+@media (max-width: 768px) {
+  .sc-course-container {
+      flex-direction: column;
+  }
+  
+  .sc-cart {
+      position: static;
+      margin-top: 20px;
+  }
+}
