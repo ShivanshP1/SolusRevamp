@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Queen's Portal</title>
+  <title>Settings - Queen's Portal</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -24,15 +24,15 @@
       <div class="dropdown">
         <button>Classes</button>
         <div class="dropdown-content">
-          <a href="#">Course History</a>
-          <a href="#">My Classes</a>
-          <a href="#">Future planning</a>
+          <a href="CourseHistory.html">Course History</a>
+          <a href="MyClasses.html">My Classes</a>
+          <a href="ShoppingCart.html">Future planning</a>
         </div>
       </div>
       <div class="dropdown">
         <button>Finance</button>
         <div class="dropdown-content">
-          <a href="#">My Account</a>
+          <a href="MyAccount.html">My Account</a>
           <a href="#">Payment Options</a>
           <a href="#">Financial Aid</a>
         </div>
@@ -71,14 +71,11 @@
       </div>
       <div class="collapsible-content">
         <div class="switch-row transparent">
-          <div class="switch-row transparent">
-            <span class="switch-label">Choose Theme</span>
-            <select id="theme-selector" class="font-size-selector" onchange="setTheme(this.value)">
-              <option value="light">Light</option>
-              <option value="dark" selected>Dark</option>
-            </select>
-          </div>          
-
+          <span class="switch-label">Theme</span>
+          <select id="theme-selector" class="font-size-selector" onchange="setTheme(this.value)">
+            <option value="light">Light</option>
+            <option value="dark" selected>Dark</option>
+          </select>
         </div>
 
         <div class="switch-row transparent">
@@ -89,11 +86,146 @@
             <option value="large">Large</option>
           </select>
         </div>
-
       </div>
     </div>
 
-  
+    <div class="collapsible-box">
+      <div class="collapsible-header">
+        <div class="box-title">Notification Preferences</div>
+        <button class="collapse-toggle" onclick="toggleBox(this)">−</button>
+      </div>
+      <div class="collapsible-content">
+        <div class="settings-box">
+          <div class="settings-header">Email Notifications</div>
+          <div class="switch-row">
+            <span class="switch-label">Course announcements</span>
+            <label class="switch">
+              <input type="checkbox" checked>
+              <span class="slider round"></span>
+            </label>
+          </div>
+          <div class="switch-row">
+            <span class="switch-label">Assignment deadlines</span>
+            <label class="switch">
+              <input type="checkbox" checked>
+              <span class="slider round"></span>
+            </label>
+          </div>
+          <div class="switch-row">
+            <span class="switch-label">Grade updates</span>
+            <label class="switch">
+              <input type="checkbox" checked>
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="settings-box">
+          <div class="settings-header">Push Notifications</div>
+          <div class="switch-row">
+            <span class="switch-label">Enable push notifications</span>
+            <label class="switch">
+              <input type="checkbox">
+              <span class="slider round"></span>
+            </label>
+          </div>
+          <div class="switch-row">
+            <span class="switch-label">Urgent alerts</span>
+            <label class="switch">
+              <input type="checkbox" checked>
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="collapsible-box">
+      <div class="collapsible-header">
+        <div class="box-title">Privacy Settings</div>
+        <button class="collapse-toggle" onclick="toggleBox(this)">−</button>
+      </div>
+      <div class="collapsible-content">
+        <div class="settings-box">
+          <div class="settings-row">
+            <span class="settings-label">Profile visibility</span>
+            <select class="text-input">
+              <option>Public</option>
+              <option selected>Queen's Community Only</option>
+              <option>Private</option>
+            </select>
+          </div>
+          <div class="settings-row">
+            <span class="settings-label">Directory listing</span>
+            <label class="switch">
+              <input type="checkbox" checked>
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="collapsible-box">
+      <div class="collapsible-header">
+        <div class="box-title">Account Security</div>
+        <button class="collapse-toggle" onclick="toggleBox(this)">−</button>
+      </div>
+      <div class="collapsible-content">
+        <div class="settings-box">
+          <div class="settings-row">
+            <span class="settings-label">Two-factor authentication</span>
+            <label class="switch">
+              <input type="checkbox">
+              <span class="slider round"></span>
+            </label>
+          </div>
+          <div class="settings-row">
+            <span class="settings-label">Password</span>
+            <button class="btn btn-outline">Change Password</button>
+          </div>
+          <div class="settings-row">
+            <span class="settings-label">Login history</span>
+            <button class="btn btn-outline">View History</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="collapsible-box">
+      <div class="collapsible-header">
+        <div class="box-title">System Preferences</div>
+        <button class="collapse-toggle" onclick="toggleBox(this)">−</button>
+      </div>
+      <div class="collapsible-content">
+        <div class="settings-box">
+          <div class="settings-row">
+            <span class="settings-label">Default page</span>
+            <select class="text-input">
+              <option>Dashboard</option>
+              <option selected>Calendar</option>
+              <option>Courses</option>
+              <option>Finances</option>
+            </select>
+          </div>
+          <div class="settings-row">
+            <span class="settings-label">Language</span>
+            <select class="text-input">
+              <option selected>English</option>
+              <option>Français</option>
+            </select>
+          </div>
+          <div class="settings-row">
+            <span class="settings-label">Time format</span>
+            <select class="text-input">
+              <option selected>24-hour</option>
+              <option>12-hour</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
