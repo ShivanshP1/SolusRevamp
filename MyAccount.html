@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Desktop Payment Portal</title>
-    <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Account - Queen's Portal</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
+
+<body class="dark">
   <div class="navbar">
-    <div class="logo">Queen's Logo</div>
+    <div class="logo-container">
+      <a href="index.html" class="logo-link">
+        <img src="QueensLogo.svg" alt="Queen's University Logo" class="logo-svg">
+      </a>
+    </div>
     <div class="nav-buttons">
       <button>Notifications</button>
       <button><a href="profile.html">Profile</a></button>
-      <button><a href="Settings.html"> Settings</a></button>
-      </div>
+      <button><a href="Settings.html">Settings</a></button>
     </div>
   </div>
 
@@ -22,124 +26,137 @@
       <div class="dropdown"><button>Classes</button>
         <div class="dropdown-content">
           <a href="CourseHistory.html">Course History</a>
-          <a href="MyClasses.html">My Classes</a>
           <a href="ShoppingCart.html">Future planning</a>
         </div>
       </div>
       <div class="dropdown"><button>Finance</button>
         <div class="dropdown-content">
           <a href="MyAccount.html">My Account</a>
-          <a href="#">Financial Aid</a>
         </div>
       </div>
       <div class="dropdown"><button>Calendar</button>
         <div class="dropdown-content">
-          <a href="#">Due dates and deadlines</a>
-          <a href="#">Advance Calendar</a>
+          <a href="MyAccount.html">Due dates and deadlines</a>
         </div>
       </div>
       <div class="dropdown"><button>Records</button>
         <div class="dropdown-content">
-          <a href="#">Transcript</a>
-          <a href="#">Verification of Enrollment</a>
-          <a href="#">Tax forms</a>
-          <a href="#">OSAP Tuition form</a>
+          <a href="records.html">Forms</a>
         </div>
       </div>
       <div class="dropdown"><button>Help</button>
         <div class="dropdown-content">
-          <a href="#">FAQ</a>
           <a href="#">Support</a>
         </div>
       </div>
     </div>
-  </div>    
-    <div class="desktop-container">
-        <!-- Left Column -->
-        <div class="payment-section">
-            <div class="payment-header">
-                <div class="payment-amount">$0</div>
-                <div class="payment-status">Automatic Payments: Off</div>
-            </div>
+  </div>
 
-            <div class="payment-input-section">
-                <div class="section-title">Make a Payment</div>
-                <div class="payment-input-group">
-                    <input type="text" class="payment-input" placeholder="Enter amount (e.g. 5000.00)">
-                    <button class="btn btn-primary">Pay Now</button>
-                </div>
-            </div>
+  <div class="vertical-layout">
+    <div class="payment-notice-box">
+      <h3>Domestic and/or International Payment Options</h3>
+      <p><strong>ONLY Continuing Teachers Education (CTE) taking an online AO/NOI course with Continuing Teachers Education, please use the "Admissioner" file to accept your offer of admission and pay your credit card. DO NOT USE the CBCP portal.</strong></p>
+      
+      <h4>DEPOSIT for Payment Method (PLEASE READ CAREFULLY):</h4>
+      <ul>
+        <li><strong>Bachelor of Education</strong>, please use the "Admissioner" file to accept your offer of admissions, your deposit MUST be paid via your Bank Account (not credit card)</li>
+        <li><strong>School of Medicine Students</strong>, please use the "Admissioner" file to accept your offer of admissions, your deposit MUST be paid via your Bank Account (not credit card)</li>
+        <li><strong>School of Law Students</strong>, please use the "Admissioner" file to accept your offer of admissions, your deposit MUST be paid via your Bank Account (not credit card)</li>
+        <li><strong>School of Graduate Studies (Master of Public Administration or Master of Urban Planning)</strong>, please use the "Admissioner" file to accept your offer of admissions, your deposit MUST be paid via your Bank Account (not credit card)</li>
+      </ul>
+      
+      <p>All other files that are NOT Depend can be paid using your Bank Account or the CBC Student Portal.</p>
+      
+      <p class="notice-warning">If you receive the error message "Previous month credit card is quoted" while calling the CBC Student Portal, please note that the CBC Student Portal does not support special characters in passwords that are essentially the failure of alphabet with account. (Assisted/obtaining). All other characters (A, B, S, e, etc.) are not reproduced. Please fill out the details/document on request for approval of relevant information from your person, emailing to account the CBC Student Portal without any release.</p>
+    </div>
 
-            <div class="payment-actions">
-                <button class="btn btn-outline">Set Up Auto Pay</button>
-                <button class="btn btn-outline">Manage Payment Methods</button>
-                <button class="btn btn-outline">View Statements</button>
-            </div>
-
-            <div class="payment-details">
-                <div class="detail-card">
-                    <div class="detail-title">Due Date</div>
-                    <div class="detail-value">N/A</div>
-                </div>
-                <div class="detail-card">
-                    <div class="detail-title">Payment Frequency</div>
-                    <div class="detail-value">Annual</div>
-                </div>
-            </div>
+    <div class="payment-columns">
+      <div class="payment-section">
+        <div class="payment-header">
+          <div class="payment-amount">$0</div>
+          <div class="payment-status">Automatic Payments: Off</div>
         </div>
-
-        <!-- Right Column -->
-        <div class="payment-section history-container">
-            <div class="section-title">Payment History</div>
-            <div class="history-item">
-                <div>
-                    <div class="history-description">BASC Tuition Fees</div>
-                    <div class="history-date">Sept 2, 2023</div>
-                </div>
-                <div class="history-amount">$5,056.10</div>
-                <div class="history-status status-paid">Paid</div>
-            </div>
-            <div class="history-item">
-                <div>
-                    <div class="history-description">Studeny Assitance</div>
-                    <div class="history-date">Jan 15, 2023</div>
-                </div>
-                <div class="history-amount">$49.00</div>
-                <div class="history-status status-paid">Paid</div>
-            </div>
-            <div class="history-item">
-                <div>
-                    <div class="history-description">Late Payment Fee</div>
-                    <div class="history-date">Feb 3, 2023</div>
-                </div>
-                <div class="history-amount">$25.00</div>
-                <div class="history-status status-paid">Paid</div>
-            </div>
-            <div class="history-item">
-              <div>
-                  <div class="history-description">BASC Tuition Fees</div>
-                  <div class="history-date">Jan 12, 2023</div>
-              </div>
-              <div class="history-amount">$5,239.60</div>
-              <div class="history-status status-paid">Paid</div>
+        
+        <div class="payment-input-section">
+          <div class="section-title">Make a Payment</div>
+          <div class="payment-input-group">
+            <input type="text" class="payment-input" placeholder="Enter amount (e.g. 5000.00)">
+            <button class="btn btn-primary">Pay Now</button>
           </div>
-          <div class="history-item">
-            <div>
-                <div class="history-description">BASC Tuition Fees</div>
-                <div class="history-date">Jan 15, 2022</div>
-            </div>
-            <div class="history-amount">$7,239.60</div>
-            <div class="history-status status-paid">Paid</div>
+        </div>
+        
+        <div class="payment-actions">
+          <button class="btn btn-outline">Set Up Auto Pay</button>
+          <button class="btn btn-outline">Manage Payment Methods</button>
+          <button class="btn btn-outline">View Statements</button>
+        </div>
+        
+        <div class="payment-details">
+          <div class="detail-card">
+            <div class="detail-title">Due Date</div>
+            <div class="detail-value">N/A</div>
+          </div>
+          <div class="detail-card">
+            <div class="detail-title">Payment Frequency</div>
+            <div class="detail-value">Annual</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="payment-section history-container">
+        <div class="section-title">Payment History</div>
+        <div class="history-item">
+          <div>
+            <div class="history-description">BASC Tuition Fees</div>
+            <div class="history-date">Sept 2, 2023</div>
+          </div>
+          <div class="history-amount">$5,056.10</div>
+          <div class="history-status status-paid">Paid</div>
         </div>
         <div class="history-item">
           <div>
-              <div class="history-description">BASC Tuition Fees</div>
-              <div class="history-date">Sept 4, 2023</div>
+            <div class="history-description">Student Assistance</div>
+            <div class="history-date">Jan 15, 2023</div>
+          </div>
+          <div class="history-amount">$49.00</div>
+          <div class="history-status status-paid">Paid</div>
+        </div>
+        <div class="history-item">
+          <div>
+            <div class="history-description">Late Payment Fee</div>
+            <div class="history-date">Feb 3, 2023</div>
+          </div>
+          <div class="history-amount">$25.00</div>
+          <div class="history-status status-paid">Paid</div>
+        </div>
+        <div class="history-item">
+          <div>
+            <div class="history-description">BASC Tuition Fees</div>
+            <div class="history-date">Jan 12, 2023</div>
+          </div>
+          <div class="history-amount">$5,239.60</div>
+          <div class="history-status status-paid">Paid</div>
+        </div>
+        <div class="history-item">
+          <div>
+            <div class="history-description">BASC Tuition Fees</div>
+            <div class="history-date">Jan 15, 2022</div>
+          </div>
+          <div class="history-amount">$7,239.60</div>
+          <div class="history-status status-paid">Paid</div>
+        </div>
+        <div class="history-item">
+          <div>
+            <div class="history-description">BASC Tuition Fees</div>
+            <div class="history-date">Sept 4, 2023</div>
           </div>
           <div class="history-amount">$6,239.60</div>
           <div class="history-status status-paid">Paid</div>
-      </div>
         </div>
+      </div>
     </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>

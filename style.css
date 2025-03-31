@@ -1,63 +1,83 @@
-/* ===== Queen's University Color Scheme ===== */
 :root {
-  /* Queen's official colors */
-  --queens-blue: #003366;       /* Primary blue */
-  --queens-gold: #FFD700;       /* Gold */
-  --queens-light-blue: #6699CC; /* Secondary blue */
-  --queens-dark-blue: #002244;  /* Dark blue */
-  
-  /* Status colors */
-  --success-color: #2ecc71;     /* Green */
-  --warning-color: #f39c12;     /* Orange */
-  --danger-color: #e74c3c;      /* Red */
-  --info-color: #3498db;        /* Blue */
-  
-  /* Base colors - Light Mode */
-  --bg-color: #f8f9fa;
+  --queens-blue: #003366;
+  --queens-gold: #FFD700;
+  --queens-light-blue: #4a7cb0;
+  --queens-dark-blue: #002244;
+  --success-color: #27ae60;
+  --warning-color: #e67e22;
+  --danger-color: #c0392b;
+  --info-color: #3498db;
+  --bg-color: #f5f7fa;
   --text-color: #333;
-  --navbar-bg: #ffffff;
-  --sticky-bg: #f1f1f1;
+  --navbar-bg: #f0f4f8;
+  --sticky-bg: #e6ebf1;
   --button-bg: var(--queens-blue);
   --button-text: #ffffff;
   --dropdown-bg: #ffffff;
-  --hover-bg: var(--queens-dark-blue);
+  --hover-bg: #1a4b8c;
   --card-bg: #ffffff;
-  --border-color: #e0e0e0;
+  --border-color: #d1d8e0;
   --highlight-color: var(--queens-gold);
+  --light-accent: #e6f0fa;
 }
 
 .dark-theme {
-  /* Softened Dark Mode Colors */
-  --bg-color: #2a2a2a;          /* Softened from #121212 */
-  --navbar-bg: #383838;         /* Softened from #1e1e1e */
-  --sticky-bg: #454545;         /* Softened from #2a2a2a */
-  --card-bg: #383838;           /* Softened from #1e1e1e */
-  --dropdown-bg: #454545;       /* Softened from #2a2a2a */
-  --border-color: #555;         /* Lightened border */
-  
-  /* Queen's colors adjusted for dark mode */
-  --queens-blue: #6699CC;
-  --queens-gold: #FFD700;
-  --queens-light-blue: #336699;
-  --queens-dark-blue: #003366;
-  
-  --text-color: #f1f1f1;
+  --bg-color: #2d3748;
+  --navbar-bg: #1a202c;
+  --sticky-bg: #2d3748;
+  --card-bg: #1a202c;
+  --dropdown-bg: #2d3748;
+  --border-color: #4a5568;
+  --queens-blue: #63b3ed;
+  --queens-gold: #f6e05e;
+  --queens-light-blue: #4299e1;
+  --queens-dark-blue: #2b6cb0;
+  --text-color: #e2e8f0;
   --button-bg: var(--queens-blue);
-  --button-text: #ffffff;
-  --hover-bg: var(--queens-light-blue);
-  --highlight-color: var(--queens-gold);
+  --button-text: #1a202c;
+  --hover-bg: #4299e1;
+  --light-accent: #2d3748;
 }
 
-/* ===== Base Styles ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: var(--bg-color);
   color: var(--text-color);
+  line-height: 1.6;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: inherit;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
 
 .content {
@@ -66,7 +86,6 @@ body {
   width: 100%;
 }
 
-/* ===== Enhanced Navigation ===== */
 .navbar {
   position: fixed;
   top: 0;
@@ -75,7 +94,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--navbar-bg);
+  background: linear-gradient(90deg, #002244, #003366);
   padding: 10px 20px;
   z-index: 1000;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -120,7 +139,6 @@ body {
   border-bottom: 1px solid var(--queens-blue);
 }
 
-/* ===== Enhanced Dropdown Buttons ===== */
 .dropdown {
   position: relative;
   display: inline-block;
@@ -190,7 +208,6 @@ body {
   padding-left: 25px;
 }
 
-/* ===== Collapsible Boxes ===== */
 .collapsible-box {
   margin: 2rem auto;
   width: 90%;
@@ -225,8 +242,8 @@ body {
 }
 
 .collapse-toggle {
-  background-color: #f0f0f0; /* Light grey background */
-  color: #555; /* Dark grey text */
+  background-color: #f0f0f0;
+  color: #555;
   border: none;
   padding: 6px 12px;
   border-radius: 4px;
@@ -238,8 +255,8 @@ body {
 }
 
 .collapse-toggle:hover {
-  background-color: #e0e0e0; /* Slightly darker grey on hover */
-  color: #333; /* Darker text on hover */
+  background-color: #e0e0e0;
+  color: #333;
 }
 
 .collapsible-content {
@@ -249,6 +266,8 @@ body {
   background-color: var(--bg-color);
   border-top: 1px solid var(--border-color);
   transition: max-height 0.3s ease, padding 0.3s ease;
+  font-size: 1.05em;
+  line-height: 1.6;
 }
 
 .collapsible-content.hidden {
@@ -258,13 +277,14 @@ body {
   border-top: none;
 }
 
-/* ===== Status Indicators ===== */
 .status-taken {
   background-color: var(--success-color);
   color: white;
   padding: 3px 8px;
   border-radius: 4px;
   font-size: 0.9em;
+  font-weight: 600;
+  text-shadow: 0 1px 3px rgba(46, 204, 113, 0.4);
 }
 
 .status-in-progress {
@@ -273,6 +293,8 @@ body {
   padding: 3px 8px;
   border-radius: 4px;
   font-size: 0.9em;
+  font-weight: 600;
+  text-shadow: 0 1px 3px rgba(255, 215, 0, 0.4);
 }
 
 .status-planned {
@@ -281,6 +303,8 @@ body {
   padding: 3px 8px;
   border-radius: 4px;
   font-size: 0.9em;
+  font-weight: 600;
+  text-shadow: 0 1px 3px rgba(102, 153, 204, 0.4);
 }
 
 .status-paid {
@@ -299,7 +323,6 @@ body {
   font-size: 0.9em;
 }
 
-/* ===== Progress Bar ===== */
 .progress-container {
   width: 90%;
   max-width: 800px;
@@ -355,7 +378,6 @@ body {
   border-top: 1px solid var(--border-color);
 }
 
-/* ===== Settings/Switch Components ===== */
 .switch-row {
   width: 100%;
   display: flex;
@@ -426,10 +448,6 @@ input:checked + .slider::before {
   border-radius: 34px;
 }
 
-.slider.round::before {
-  border-radius: 50%;
-}
-
 .font-size-control {
   display: flex;
   justify-content: space-between;
@@ -460,7 +478,6 @@ input:checked + .slider::before {
   background-color: var(--hover-bg);
 }
 
-/* ===== Settings Boxes ===== */
 .settings-box {
   width: inherit; 
   background-color: var(--card-bg);
@@ -523,7 +540,6 @@ input:checked + .slider::before {
   box-shadow: 0 0 0 2px rgba(0, 51, 102, 0.2);
 }
 
-/* ===== Calendar Styles ===== */
 .calendar-page-container {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
@@ -691,7 +707,6 @@ input:checked + .slider::before {
   width: 100px;
 }
 
-/* ===== Shopping Cart Styles ===== */
 .sc-body {
   font-family: Arial, sans-serif;
   background-color: var(--bg-color);
@@ -904,7 +919,6 @@ input:checked + .slider::before {
   padding: 20px;
 }
 
-/* ===== My Account Page Styles ===== */
 .desktop-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1080,7 +1094,6 @@ input:checked + .slider::before {
   font-weight: 600;
 }
 
-/* ===== Utility Classes ===== */
 .highlight-gold {
   color: var(--queens-gold);
   font-weight: bold;
@@ -1095,7 +1108,170 @@ input:checked + .slider::before {
   color: var(--queens-blue);
 }
 
-/* ===== Responsive Adjustments ===== */
+.payment-notice-box {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 1200px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.payment-notice-box h3 {
+  color: var(--queens-blue);
+  margin-top: 0;
+  border-bottom: 2px solid var(--queens-gold);
+  padding-bottom: 10px;
+}
+
+.payment-notice-box h4 {
+  color: var(--queens-dark-blue);
+  margin: 15px 0 10px;
+}
+
+.payment-notice-box ul {
+  padding-left: 20px;
+}
+
+.payment-notice-box li {
+  margin-bottom: 8px;
+}
+
+.notice-warning {
+  background-color: rgba(231, 76, 60, 0.1);
+  border-left: 4px solid var(--danger-color);
+  padding: 10px 15px;
+  margin: 15px 0 0;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 5px 15px;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.logo-svg {
+  height: 32px;
+  width: auto;
+  filter: drop-shadow(0 0 2px rgba(255,255,255,0.3));
+}
+
+.vertical-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: calc(55px + 6vi + 20px) 20px 20px;
+}
+
+.payment-columns {
+  width: 100%;
+  display: flex;
+  gap: 20px;
+}
+
+.payment-section {
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .payment-columns {
+    flex-direction: column;
+  }
+}
+
+.profile-content {
+  padding-top: calc(55px + 6vi);
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.profile-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6699CC, #4a7cb0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 2.5rem;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.profile-title {
+  color: var(--queens-light-blue);
+  margin: 0;
+  font-size: 2rem;
+}
+
+.profile-subtitle {
+  color: var(--text-color);
+  opacity: 0.9;
+  margin: 5px 0 0;
+  font-size: 1.1rem;
+}
+
+@media (min-width: 768px) {
+  .table-header {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.5rem;
+    padding: 0.75rem;
+    background-color: var(--nav-bg);
+    font-weight: bold;
+    border-bottom: 2px solid var(--queens-blue);
+  }
+  
+  .table-cell[data-label]::before {
+    display: none;
+  }
+  
+  .details-content {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .table-row {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+  
+  .nav-menu {
+    flex-wrap: wrap;
+  }
+  
+  .portal-content {
+    padding: 6rem 1rem 2rem;
+  }
+}
+
 @media (max-width: 1024px) {
   .desktop-container {
       grid-template-columns: 1fr;
@@ -1134,7 +1310,6 @@ input:checked + .slider::before {
   }
 }
 
-/* ===== Print Styles ===== */
 @media print {
   .calendar-page-container {
       background-color: white;
@@ -1152,96 +1327,3 @@ input:checked + .slider::before {
       display: none;
   }
 }
-
-/* ===== Enhanced Text Inside Collapsible Boxes ===== */
-.collapsible-content {
-  /* Text styling */
-  font-size: 1.05em; /* Slightly larger text */
-  line-height: 1.6;  /* Better readability */
-}
-
-/* Make all text content stand out */
-.collapsible-content p,
-.collapsible-content .settings-text,
-.collapsible-content .settings-label,
-.collapsible-content .settings-row > span,
-.collapsible-content li {
-  color: var(--text-color);
-  font-weight: 500; /* Medium weight for better visibility */
-  text-shadow: 0 1px 2px rgba(0,0,0,0.1); /* Subtle depth */
-  transition: all 0.2s ease; /* Smooth hover effects */
-}
-
-/* Dark mode adjustments */
-.dark-theme .collapsible-content p,
-.dark-theme .collapsible-content .settings-text,
-.dark-theme .collapsible-content .settings-label,
-.dark-theme .collapsible-content .settings-row > span,
-.dark-theme .collapsible-content li {
-  text-shadow: 0 1px 1px rgba(255,255,255,0.05);
-}
-
-/* Make headers pop more */
-.collapsible-content .settings-header {
-  font-size: 1.15em;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  margin: 15px 0 10px;
-}
-
-/* Status text enhancements */
-.collapsible-content .status-taken,
-.collapsible-content .status-paid {
-  font-weight: 600;
-  text-shadow: 0 1px 3px rgba(46, 204, 113, 0.4);
-}
-
-.collapsible-content .status-in-progress,
-.collapsible-content .status-pending {
-  font-weight: 600;
-  text-shadow: 0 1px 3px rgba(255, 215, 0, 0.4);
-}
-
-.collapsible-content .status-planned {
-  font-weight: 600;
-  text-shadow: 0 1px 3px rgba(102, 153, 204, 0.4);
-}
-
-/* Hover effects on interactive text */
-.collapsible-content a,
-.collapsible-content .settings-row:hover > span {
-  color: var(--queens-light-blue);
-  text-shadow: 0 1px 3px rgba(102, 153, 204, 0.3);
-}
-
-/* ===== Disable Default Hyperlink Styling ===== */
-a {
-  color: inherit; /* Inherits text color from parent */
-  text-decoration: none; /* Removes underline */
-  cursor: pointer; /* Maintains pointer cursor */
-  transition: none; /* Remove any transitions if not needed */
-}
-
-/* Optionally add your own link styling */
-a:hover {
-  color: var(--queens-light-blue); /* Example hover color */
-  /* Add any custom hover effects here */
-}
-
-/* For dark mode specific link colors */
-.dark-theme a {
-  color: inherit;
-}
-
-.dark-theme a:hover {
-  color: var(--queens-gold); /* Example dark mode hover color */
-}
-
-/* If you need to style specific links differently */
-.nav-buttons a, 
-.dropdown-content a {
-  /* Your existing button/link styles here */
-  /* These will override the base link styles */
-}
-
-

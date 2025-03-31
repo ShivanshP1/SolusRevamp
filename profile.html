@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Queen's Portal</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile - Queen's Portal</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="dark-theme">
+<body class="dark">
   <div class="navbar">
     <div class="logo-container">
       <a href="index.html" class="logo-link">
@@ -16,47 +16,35 @@
     </div>
     <div class="nav-buttons">
       <button>Notifications</button>
-      <button>Profile</button>
+      <button><a href="profile.html">Profile</a></button>
       <button><a href="Settings.html">Settings</a></button>
     </div>
   </div>
 
   <div class="sticky-bar">
     <div class="nav-buttons">
-      <div class="dropdown">
-        <button>Classes</button>
+      <div class="dropdown"><button>Classes</button>
         <div class="dropdown-content">
           <a href="CourseHistory.html">Course History</a>
-          <a href="">My Classes</a>
           <a href="ShoppingCart.html">Future planning</a>
         </div>
       </div>
-      <div class="dropdown">
-        <button>Finance</button>
+      <div class="dropdown"><button>Finance</button>
         <div class="dropdown-content">
-          <a href="#">My Account</a>
-          <a href="#">Payment Options</a>
-          <a href="#">Financial Aid</a>
+          <a href="MyAccount.html">My Account</a>
         </div>
       </div>
-      <div class="dropdown">
-        <button>Calendar</button>
+      <div class="dropdown"><button>Calendar</button>
         <div class="dropdown-content">
-          <a href="#">Due dates and deadlines</a>
-          <a href="#">Advance Calendar</a>
+          <a href="calendar.html">Due dates and deadlines</a>
         </div>
       </div>
-      <div class="dropdown">
-        <button>Records</button>
+      <div class="dropdown"><button>Records</button>
         <div class="dropdown-content">
-          <a href="#">Transcript</a>
-          <a href="#">Verification of Enrollment</a>
-          <a href="#">Tax forms</a>
-          <a href="#">OSAP Tuition form</a>
+          <a href="records.html">Forms</a>
         </div>
       </div>
-      <div class="dropdown">
-        <button>Help</button>
+      <div class="dropdown"><button>Help</button>
         <div class="dropdown-content">
           <a href="#">FAQ</a>
           <a href="#">Support</a>
@@ -65,144 +53,130 @@
     </div>
   </div>
 
-  <div class="content">
-
-
+  <div class="profile-content">
+    <div class="profile-section">
+      <div class="profile-header">
+        <div class="profile-avatar">ML</div>
+        <div>
+          <h1 class="profile-title">Mira Lee</h1>
+          <p class="profile-subtitle">Computer Engineering • Student ID: 20345574</p>
+        </div>
+      </div>
+    </div>
 
     <div class="collapsible-box">
-        <div class="collapsible-header">
-          <div class="box-title">Personal Information</div>
-          <button class="collapse-toggle" onclick="toggleBox(this)">−</button>
-        </div>
-
-        <div class="collapsible-content">
-          <div class="settings-box">          
-            <div class="settings-row">
-              <span class="settings-label">Name</span>
-              <span class="settings-text">Mira Lee</span>
-            </div>          
-            <div class="settings-row">
-              <span class="settings-label">Gender</span>
-              <span class="settings-text">Female</span>
-            </div>     
-            <div class="settings-row">
-              <span class="settings-label">Date of Birth</span>
-              <span class="settings-text">2004/04/25</span>
-            </div> 
-            <div class="settings-row">
-              <span class="settings-label">Student ID</span>
-              <span class="settings-text">20345574</span>
-            </div>      
-            <div class="settings-row">
-              <span class="settings-label">SIN</span>
-              <span class="settings-text">****1235</span>
-            </div> 
-          </div>
-
-          
-        </div>
+      <div class="collapsible-header">
+        <div class="box-title">Personal Information</div>
+        <button class="collapse-toggle" onclick="toggleBox(this)">−</button>
       </div>
-
-
-
-      <div class="collapsible-box">
-        <div class="collapsible-header">
-          <div class="box-title">Contact Details</div>
-          <button class="collapse-toggle" onclick="toggleBox(this)">−</button>
-        </div>
-        <div class="collapsible-content">
-
-          <div class="settings-box">
-            <div class="settings-header">Email Preferences</div>
-          
-            <div class="settings-row">
-              <span class="settings-label">Primary Email</span>
-              <span class="settings-text">ML22@queensu.ca</span>
-              <span class="settings-text">Preferred</span>
-            </div>          
-            <div class="settings-row">
-              <span class="settings-label">Secondary Email</span>
-              <span class="settings-text">MiraLee@queensu.ca</span>
-              <span class="settings-text">−</span>
-            </div>          
-          </div>
-
-          <div class="settings-box">
-            <div class="settings-header">Phone Preferences</div>          
-            <div class="settings-row">
-              <span class="settings-label">Mobile</span>
-              <span class="settings-text">647-112-1111</span>
-              <span class="settings-text">Preferred</span>
-            </div>          
-            <div class="settings-row">
-              <span class="settings-label">Home</span>
-              <span class="settings-text">647-1231-3123</span>
-              <span class="settings-text">−</span>
-            </div>  
-            <div class="settings-row">
-              <span class="settings-label">Application</span>
-              <span class="settings-text">647-112-1111</span>
-              <span class="settings-text">−</span>
-            </div>        
-          </div>       
-        </div>
-      </div>
- 
-      <div class="collapsible-box">
-        <div class="collapsible-header">
-          <div class="box-title">Address</div>
-          <button class="collapse-toggle" onclick="toggleBox(this)">−</button>
-        </div>
-
-
-        <div class="collapsible-content">
-
-          <div class="settings-box">
-            <div class="settings-header">Current Address</div>          
-            <div class="settings-row">
-              <span class="settings-text">223 Madeup Street</span>
-            </div>     
-            <div class="settings-row">
-              <span class="settings-text">Kingston</span>
-            </div>  
-            <div class="settings-row">
-              <span class="settings-text">ON K9A 1A1</span>
-            </div>  
-            <div class="settings-row">
-              <span class="settings-text">Canada</span>
-            </div>                
-          </div>  
-          <div class="settings-box">
-            <div class="settings-header">Application Address</div>          
-            <div class="settings-row">
-              <span class="settings-text">43 AnotherMadeUp Street</span>
-            </div>     
-            <div class="settings-row">
-              <span class="settings-text">Toronto</span>
-            </div>  
-            <div class="settings-row">
-              <span class="settings-text">ON A1A 1A1</span>
-            </div>  
-            <div class="settings-row">
-              <span class="settings-text">Canada</span>
-            </div>                
+      <div class="collapsible-content">
+        <div class="settings-box">          
+          <div class="settings-row">
+            <span class="settings-label">Name</span>
+            <span class="settings-text">Mira Lee</span>
+          </div>          
+          <div class="settings-row">
+            <span class="settings-label">Gender</span>
+            <span class="settings-text">Female</span>
           </div>     
+          <div class="settings-row">
+            <span class="settings-label">Date of Birth</span>
+            <span class="settings-text">2004/04/25</span>
+          </div>      
+          <div class="settings-row">
+            <span class="settings-label">SIN</span>
+            <span class="settings-text">****1235</span>
+          </div> 
+        </div>
+      </div>
+    </div>
 
+    <div class="collapsible-box">
+      <div class="collapsible-header">
+        <div class="box-title">Contact Details</div>
+        <button class="collapse-toggle" onclick="toggleBox(this)">−</button>
+      </div>
+      <div class="collapsible-content">
+        <div class="settings-box">
+          <div class="settings-header">Email Preferences</div>
+          <div class="settings-row">
+            <span class="settings-label">Primary Email</span>
+            <span class="settings-text">ML22@queensu.ca</span>
+            <span class="settings-text">Preferred</span>
+          </div>          
+          <div class="settings-row">
+            <span class="settings-label">Secondary Email</span>
+            <span class="settings-text">MiraLee@queensu.ca</span>
+            <span class="settings-text">−</span>
+          </div>          
         </div>
 
+        <div class="settings-box">
+          <div class="settings-header">Phone Preferences</div>          
+          <div class="settings-row">
+            <span class="settings-label">Mobile</span>
+            <span class="settings-text">647-112-1111</span>
+            <span class="settings-text">Preferred</span>
+          </div>          
+          <div class="settings-row">
+            <span class="settings-label">Home</span>
+            <span class="settings-text">647-1231-3123</span>
+            <span class="settings-text">−</span>
+          </div>  
+          <div class="settings-row">
+            <span class="settings-label">Application</span>
+            <span class="settings-text">647-112-1111</span>
+            <span class="settings-text">−</span>
+          </div>        
+        </div>       
+      </div>
+    </div>
+ 
+    <div class="collapsible-box">
+      <div class="collapsible-header">
+        <div class="box-title">Address</div>
+        <button class="collapse-toggle" onclick="toggleBox(this)">−</button>
+      </div>
+      <div class="collapsible-content">
+        <div class="settings-box">
+          <div class="settings-header">Current Address</div>          
+          <div class="settings-row">
+            <span class="settings-text">223 Madeup Street</span>
+          </div>     
+          <div class="settings-row">
+            <span class="settings-text">Kingston</span>
+          </div>  
+          <div class="settings-row">
+            <span class="settings-text">ON K9A 1A1</span>
+          </div>  
+          <div class="settings-row">
+            <span class="settings-text">Canada</span>
+          </div>                
+        </div>  
+        <div class="settings-box">
+          <div class="settings-header">Application Address</div>          
+          <div class="settings-row">
+            <span class="settings-text">43 AnotherMadeUp Street</span>
+          </div>     
+          <div class="settings-row">
+            <span class="settings-text">Toronto</span>
+          </div>  
+          <div class="settings-row">
+            <span class="settings-text">ON A1A 1A1</span>
+          </div>  
+          <div class="settings-row">
+            <span class="settings-text">Canada</span>
+          </div>                
+        </div>     
+      </div>
+    </div>
 
-          
-          
-            
-        </div>
-      
     <div class="collapsible-box">
       <div class="collapsible-header">
         <div class="box-title">Emergency Contacts</div>
         <button class="collapse-toggle" onclick="toggleBox(this)">−</button>
       </div>
       <div class="collapsible-content">
-
         <div class="settings-box">         
           <div class="settings-row">
             <span class="settings-label">Jasmine Lee</span>
@@ -210,7 +184,6 @@
             <span class="settings-text">Preferred</span>
           </div>               
         </div>   
-
       </div>
     </div>
 
@@ -220,25 +193,27 @@
         <button class="collapse-toggle" onclick="toggleBox(this)">−</button>
       </div>
       <div class="collapsible-content">
-
         <div class="settings-box">
           <div class="settings-header">Section 1</div>
           <div class="settings-row">
-            <label class="settings-label" for="option1">Your primary email will be used for official university communications. Ensure your contact information is up to date.</label>
+            <label class="settings-label">Your primary email will be used for official university communications.</label>
           </div>
           <div class="settings-row">
             <div class="settings-label">
-              <input type="radio" id="option1" name="section1" value="option1">I authorize release of this information to my immediate family (parents, siblings or guardian) and/or my school officials.
+              <input type="radio" id="option1" name="section1" value="option1"> 
+              I authorize release to my immediate family
             </div>
           </div>
           <div class="settings-row">
             <div class="settings-label">
-              <input type="radio" id="option2" name="section1" value="option2"> I do NOT authorize release of this information to anyone.
+              <input type="radio" id="option2" name="section1" value="option2"> 
+              I do NOT authorize release
             </div>
           </div>
           <div class="settings-row">
             <div class="settings-label">
-              <input type="radio" id="option3" name="section1" value="option3"> I do NOT authorize release of this information to anyone except for the following:
+              <input type="radio" id="option3" name="section1" value="option3"> 
+              I authorize release only to:
             </div>
           </div>
         </div>
@@ -246,84 +221,65 @@
         <div class="settings-box">
           <div class="settings-header">Section 2</div>
           <div class="settings-row">
-            <label class="settings-label" for="option4">You are currently receiving communications related to scholarships, bursaries, and fee assessments. Would you like to continue receiving these updates?</label>
+            <label class="settings-label">Receive communications about scholarships and fees?</label>
           </div>
           <div class="settings-row">
             <div class="settings-label">
-              <input type="radio" id="option4" name="section2" value="option4"> I do NOT authorize release of my academic data (e.g. course registration and marks) to anyone.
+              <input type="radio" id="option4" name="section2" value="option4"> 
+              Do NOT release my academic data
             </div>
           </div>
           <div class="settings-row">
             <div class="settings-label">
-              <input type="radio" id="option5" name="section2" value="option5">I authorize release of my academic data (e.g. course registration and marks) to ONLY the following:
-            </div>
-          </div>
-        </div>
-        
-        <div class="settings-box">
-          <div class="settings-header">Section 3</div>
-          <div class="settings-row">
-            <label class="settings-label" for="option7">Your student record is confidential. Queen's University will not provide financial data (e.g. scholarship, bursaries, fee assessments, T2202A, and current account balance) to others unless you explicitly give us authorization to do so.</label>
-          </div>
-          <div class="settings-row">
-            <div class="settings-label">
-              <input type="radio" id="option7" name="section3" value="option7"> I do NOT authorize release of my financial data (e.g. scholarship, bursaries, fee assessments, T2202A, and current account balance) to anyone.
-            </div>
-          </div>
-          <div class="settings-row">
-            <div class="settings-label">
-              <input type="radio" id="option8" name="section3" value="option8"> I authorize release of my financial data (e.g. scholarship, bursaries, fee assessments, T2202A, and current account balance) to ONLY the following:
+              <input type="radio" id="option5" name="section2" value="option5">
+              Release academic data ONLY to:
             </div>
           </div>
         </div>
-
       </div>      
-
-  </div>
-
-  <div class="collapsible-box">
-    <div class="collapsible-header">
-      <div class="box-title">Indigenous Self-Identification</div>
-      <button class="collapse-toggle" onclick="toggleBox(this)">−</button>
     </div>
-    <div class="collapsible-content">
 
-      <div class="settings-box">
-        <div class="settings-header">Section 1</div>
-        <div class="settings-row">
-          <label class="settings-label">The process of self-identification gives students with Indigenous ancestry at Queen's the opportunity to claim this identity at any point during their time at the university, and learn more about their culture and/or connect with the growing Indigenous community at Queen's..</label>
-        </div>
-        <div class="settings-row">
-          <label class="settings-label">
-            The information provided will only be accessible by select staff at the Four Directions Indigenous Student Centre and in the Office of the University Registrar, and will be used to enhance programming, support and outreach strategies for Indigenous students. Any reporting will be done in aggregate, meaning that statistics will be collected and used in large numbers and not attached to your name or any identifying information. For more details about how the information will be used, please review our Frequently Asked Questions.</label>
-        </div>
-        <div class="settings-row">
-          <label class="settings-label">Your information will be kept confidential and will be stored internally and electronically in a secure location.</label>
-        </div>
-        <div class="settings-row">
-          <label class="settings-label"> Would you identify yourself as a student with Indigenous ancestry?</label>
-        </div>
-        <div class="settings-row">
-          <div class="settings-label">
-            <input type="radio" id="option1" name="section4" value="option1">Yes
+    <div class="collapsible-box">
+      <div class="collapsible-header">
+        <div class="box-title">Indigenous Self-Identification</div>
+        <button class="collapse-toggle" onclick="toggleBox(this)">−</button>
+      </div>
+      <div class="collapsible-content">
+        <div class="settings-box">
+          <div class="settings-row">
+            <label class="settings-label">
+              The process of self-identification gives students with Indigenous ancestry at Queen's the opportunity...
+            </label>
           </div>
-        </div>
-        <div class="settings-row">
-          <div class="settings-label">
-            <input type="radio" id="option2" name="section4" value="option2"> No
+          <div class="settings-row">
+            <label class="settings-label">
+              Your information will be kept confidential and stored securely.
+            </label>
           </div>
-        </div>
-        <div class="settings-row">
-          <div class="settings-label">
-            <input type="radio" id="option3" name="section4" value="option3"> I prefer not to answer at this time
+          <div class="settings-row">
+            <label class="settings-label">
+              Would you identify yourself as a student with Indigenous ancestry?
+            </label>
+          </div>
+          <div class="settings-row">
+            <div class="settings-label">
+              <input type="radio" id="indig-yes" name="indigenous" value="yes"> Yes
+            </div>
+          </div>
+          <div class="settings-row">
+            <div class="settings-label">
+              <input type="radio" id="indig-no" name="indigenous" value="no"> No
+            </div>
+          </div>
+          <div class="settings-row">
+            <div class="settings-label">
+              <input type="radio" id="indig-prefer-not" name="indigenous" value="prefer-not"> Prefer not to answer
+            </div>
           </div>
         </div>
       </div>
-      
-
-    </div>
-
-</div>  
+    </div>  
+  </div>
 
   <script src="script.js"></script>
 </body>

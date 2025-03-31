@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Queen's Portal - Academic Records</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="dark">
+    <div class="navbar">
+        <div class="logo-container">
+          <a href="index.html" class="logo-link">
+            <img src="QueensLogo.svg" alt="Queen's University Logo" class="logo-svg">
+          </a>
+        </div>
+        <div class="nav-buttons">
+          <button>Notifications</button>
+          <button><a href="profile.html">Profile</a></button>
+          <button><a href="Settings.html">Settings</a></button>
+        </div>
+      </div>
+    
+      <div class="sticky-bar">
+        <div class="nav-buttons">
+          <div class="dropdown"><button>Classes</button>
+            <div class="dropdown-content">
+              <a href="CourseHistory.html">Course History</a>
+              <a href="ShoppingCart.html">Future planning</a>
+            </div>
+          </div>
+          <div class="dropdown"><button>Finance</button>
+            <div class="dropdown-content">
+              <a href="MyAccount.html">My Account</a>
+            </div>
+          </div>
+          <div class="dropdown"><button>Calendar</button>
+            <div class="dropdown-content">
+              <a href="calendar.html">Due dates and deadlines</a>
+            </div>
+          </div>
+          <div class="dropdown"><button>Records</button>
+            <div class="dropdown-content">
+              <a href="records.html">Forms</a>
+            </div>
+          </div>
+          <div class="dropdown"><button>Help</button>
+            <div class="dropdown-content">
+              <a href="#">Support</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  <div class="content">
+    <div class="records-container">
+      <div id="transcript" class="collapsible-box">
+        <div class="collapsible-header">
+          <h2 class="box-title">Academic Transcript</h2>
+          <button class="collapse-toggle">−</button>
+        </div>
+        
+        <div class="collapsible-content">
+          <div class="transcript-info">
+            <div class="settings-row">
+              <span class="settings-label">Student Name:</span>
+              <span class="settings-text">John A. Smith</span>
+            </div>
+            <div class="settings-row">
+              <span class="settings-label">Student ID:</span>
+              <span class="settings-text">20XXXXXXX</span>
+            </div>
+            <div class="settings-row">
+              <span class="settings-label">Program:</span>
+              <span class="settings-text">Bachelor of Applied Science - Electrical Engineering</span>
+            </div>
+            <div class="settings-row">
+              <span class="settings-label">Status:</span>
+              <span class="settings-text">Full-time, In Good Standing</span>
+            </div>
+          </div>
+
+          
+          <div class="transcript-summary">
+            <div class="settings-row">
+              <span class="settings-label">Total Credits Earned:</span>
+              <span class="settings-text">16.00</span>
+            </div>
+            <div class="settings-row">
+              <span class="settings-label">Current GPA:</span>
+              <span class="settings-text">3.12</span>
+            </div>
+            <div class="settings-row">
+              <span class="settings-label">Program Requirements:</span>
+              <span class="settings-text">48.00 credits</span>
+            </div>
+          </div>
+          <button class="btn-primary" style="margin-top: 20px;">Download Transcript</button>
+        </div>
+      </div>
+      
+      <!-- Verification of Enrollment Section -->
+      <div id="verification" class="collapsible-box">
+        <div class="collapsible-header">
+          <h2 class="box-title">Verification of Enrollment</h2>
+          <button class="collapse-toggle">−</button>
+        </div>
+        
+        <div class="collapsible-content">
+          <p>Official verification of your enrollment status can be used for:</p>
+          <ul style="margin-left: 20px; margin-bottom: 20px;">
+            <li>Scholarship applications</li>
+            <li>Banking purposes (student accounts/loans)</li>
+            <li>Insurance purposes</li>
+            <li>Government agencies</li>
+            <li>Other institutions</li>
+          </ul>
+          
+          <div class="settings-box">
+            <h3 class="settings-header">Request Verification Letter</h3>
+            <div class="settings-row">
+              <span class="settings-label">Purpose:</span>
+              <select class="text-input">
+                <option value="">Select purpose</option>
+                <option value="banking">Banking/Financial Institution</option>
+                <option value="insurance">Insurance Provider</option>
+                <option value="scholarship">Scholarship Application</option>
+                <option value="other">Other Institution</option>
+                <option value="personal">Personal Use</option>
+              </select>
+            </div>
+            
+            <div class="settings-row">
+              <span class="settings-label">Recipient Name:</span>
+              <input type="text" class="text-input" placeholder="Institution or organization name">
+            </div>
+            
+            <div class="settings-row">
+              <span class="settings-label">Delivery Method:</span>
+              <select class="text-input">
+                <option value="download">Download PDF</option>
+                <option value="email">Email to me</option>
+                <option value="mail">Mail to recipient</option>
+              </select>
+            </div>
+            
+            <button class="btn-primary" style="margin-top: 20px; width: 100%;">Submit Request</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="tax-forms" class="collapsible-box">
+        <div class="collapsible-header">
+          <h2 class="box-title">Tax Forms</h2>
+          <button class="collapse-toggle">−</button>
+        </div>
+        
+        <div class="collapsible-content">
+          <p>Tax forms for the current and previous years are available for download below. These forms include:</p>
+          
+          <div class="payment-details" style="margin-top: 20px;">
+            <div class="detail-card">
+              <div class="detail-title">T2202 - Tuition and Enrolment Certificate</div>
+              <div class="detail-value">Official tax receipt for tuition paid and months enrolled</div>
+              <div style="display: flex; gap: 10px; margin-top: 15px;">
+                <button class="btn-outline">2023</button>
+                <button class="btn-outline">2022</button>
+                <button class="btn-outline">2021</button>
+              </div>
+            </div>
+            
+            <div class="detail-card">
+              <div class="detail-title">T4A - Scholarship Income</div>
+              <div class="detail-value">Report of scholarship/bursary income received</div>
+              <div style="display: flex; gap: 10px; margin-top: 15px;">
+                <button class="btn-outline">2023</button>
+                <button class="btn-outline">2022</button>
+                <button class="btn-outline">2021</button>
+              </div>
+            </div>
+            
+            <div class="detail-card">
+              <div class="detail-title">RL-8 (Québec Residents)</div>
+              <div class="detail-value">Tuition and education tax credit for Québec</div>
+              <div style="display: flex; gap: 10px; margin-top: 15px;">
+                <button class="btn-outline">2023</button>
+                <button class="btn-outline">2022</button>
+                <button class="btn-outline">2021</button>
+              </div>
+            </div>
+          </div>
+          
+          <div class="payment-notice-box">
+            <h4>Important Tax Information</h4>
+            <ul>
+              <li>T2202 forms are typically available by the end of February each year</li>
+              <li>You can claim tuition fees paid for the current year and any unused amounts carried forward from previous years</li>
+              <li>Keep all tax documents for at least 6 years</li>
+              <li>For questions about tax forms, contact Student Accounts</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <!-- OSAP Tuition Form Section -->
+      <div id="osap" class="collapsible-box">
+        <div class="collapsible-header">
+          <h2 class="box-title">OSAP Tuition Forms</h2>
+          <button class="collapse-toggle">−</button>
+        </div>
+        
+        <div class="collapsible-content">
+          <div class="payment-notice-box">
+            <p>The OSAP Tuition Form confirms your enrollment and tuition information for the Ontario Student Assistance Program.</p>
+            <div class="notice-warning">
+              <strong>Important:</strong> OSAP recipients must confirm their enrollment each term to maintain funding eligibility.
+            </div>
+          </div>
+          
+          <div class="payment-details" style="margin-top: 20px;">
+            <div class="detail-card">
+              <div class="detail-title">OSAP Enrollment Confirmation</div>
+              <div class="detail-value">Confirms your current enrollment status for OSAP purposes</div>
+              <button class="btn-primary" style="margin-top: 15px; width: 100%;">Generate Form</button>
+            </div>
+            
+            <div class="detail-card">
+              <div class="detail-title">OSAP Tuition Fee Confirmation</div>
+              <div class="detail-value">Provides detailed tuition and fee information for your OSAP application</div>
+              <button class="btn-primary" style="margin-top: 15px; width: 100%;">Generate Form</button>
+            </div>
+            
+            <div class="detail-card">
+              <div class="detail-title">OSAP Income Verification</div>
+              <div class="detail-value">Required if your income information needs to be confirmed</div>
+              <button class="btn-primary" style="margin-top: 15px; width: 100%;">Generate Form</button>
+            </div>
+          </div>
+          
+          <div class="payment-notice-box" style="margin-top: 20px;">
+            <h4>Important OSAP Deadlines</h4>
+            <table style="width: 100%; border-collapse: collapse;">
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <th style="text-align: left; padding: 8px 0;">Term</th>
+                <th style="text-align: left; padding: 8px 0;">Confirmation Deadline</th>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 8px 0;">Fall 2023</td>
+                <td style="padding: 8px 0;">October 15, 2023</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 8px 0;">Winter 2024</td>
+                <td style="padding: 8px 0;">February 15, 2024</td>
+              </tr>
+              <tr>
+                <td style="padding: 8px 0;">Summer 2024</td>
+                <td style="padding: 8px 0;">June 15, 2024</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Toggle collapsible sections
+    document.querySelectorAll('.collapse-toggle').forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        const header = toggle.closest('.collapsible-header');
+        const box = header.parentElement;
+        const content = box.querySelector('.collapsible-content');
+        
+        if (content.classList.contains('hidden')) {
+          content.classList.remove('hidden');
+          toggle.textContent = '−';
+        } else {
+          content.classList.add('hidden');
+          toggle.textContent = '+';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

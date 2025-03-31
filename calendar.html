@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Queen's Portal - Due Dates & Deadlines</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Layout Overrides */
+    .desktop-container {
+      grid-template-columns: 35% 65% !important;
+      gap: 15px !important;
+    }
+    .calendar-section {
+      padding-right: 0 !important;
+      margin-right: -10px !important;
+    }
+    .deadlines-section {
+      padding-left: 0 !important;
+    }
+    .calendar-grid {
+      grid-template-columns: 80px repeat(5, 1fr) !important;
+    }
+    .calendar-time-header {
+      min-width: 80px !important;
+    }
+    @media (max-width: 768px) {
+      .desktop-container {
+        grid-template-columns: 1fr !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="dark">
+  <!-- Navigation Bar -->
+  <div class="navbar">
+    <div class="logo-container">
+      <a href="index.html" class="logo-link">
+        <img src="QueensLogo.svg" alt="Queen's University Logo" class="logo-svg">
+      </a>
+    </div>
+    <div class="nav-buttons">
+      <button>Notifications</button>
+      <button><a href="profile.html">Profile</a></button>
+      <button><a href="Settings.html">Settings</a></button>
+    </div>
+  </div>
+
+  <!-- Secondary Navigation -->
+  <div class="sticky-bar">
+    <div class="nav-buttons">
+      <div class="dropdown"><button>Classes</button>
+        <div class="dropdown-content">
+          <a href="CourseHistory.html">Course History</a>
+          <a href="ShoppingCart.html">Future planning</a>
+        </div>
+      </div>
+      <div class="dropdown"><button>Finance</button>
+        <div class="dropdown-content">
+          <a href="MyAccount.html">My Account</a>
+        </div>
+      </div>
+      <div class="dropdown"><button>Calendar</button>
+        <div class="dropdown-content">
+          <a href="calendar.html">Due dates and deadlines</a>
+        </div>
+      </div>
+      <div class="dropdown"><button>Records</button>
+        <div class="dropdown-content">
+          <a href="#">Transcript</a>
+          <a href="#">Verification of Enrollment</a>
+          <a href="#">Tax forms</a>
+          <a href="#">OSAP Tuition form</a>
+        </div>
+      </div>
+      <div class="dropdown"><button>Help</button>
+        <div class="dropdown-content">
+          <a href="#">Support</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="content">
+    <div class="desktop-container">
+      <!-- Calendar Section (Left) -->
+      <div class="payment-section calendar-section">
+        <div class="payment-header">
+          <h2 class="section-title">University Calendar</h2>
+          <div class="calendar-controls">
+            <button class="calendar-button active">Month</button>
+            <button class="calendar-button">Week</button>
+          </div>
+        </div>
+        
+        <div class="calendar-grid">
+          <div class="calendar-time-header">Time</div>
+          <div class="calendar-day-header">Mon</div>
+          <div class="calendar-day-header">Tue</div>
+          <div class="calendar-day-header">Wed</div>
+          <div class="calendar-day-header">Thu</div>
+          <div class="calendar-day-header">Fri</div>
+          
+          <!-- Morning -->
+          <div class="calendar-time-header">8:00AM</div>
+          <div class="calendar-time-slot"></div>
+          <div class="calendar-time-slot"></div>
+          <div class="calendar-time-slot"></div>
+          <div class="calendar-time-slot"></div>
+          <div class="calendar-time-slot"></div>
+          
+          <div class="calendar-time-header">9:00AM</div>
+          <div class="calendar-time-slot"></div>
+          <div class="calendar-time-slot">
+            <div class="calendar-course-event" style="border-left-color: var(--queens-blue);">
+              <div>
+                <div class="calendar-course-code">QUIP Apps Open</div>
+                <div class="calendar-course-type">Internship Program</div>
+              </div>
+              <div>
+                <div class="calendar-course-time">All Day</div>
+                <div class="calendar-course-location">Online</div>
+              </div>
+            </div>
+          </div>
+          <div class="calendar-time-slot"></div>
+          <div class="calendar-time-slot"></div>
+          <div class="calendar-time-slot"></div>
+          
+          <!-- Midday -->
+          <div class="calendar-time-header">12:00PM</div>
+          <div class="calendar-time-slot"></div>
+          <div class="calendar-time-slot"></div>
+          <div class="calendar-time-slot">
+            <div class="calendar-course-event" style="border-left-color: var(--queens-gold);">
+              <div>
+                <div class="calendar-course-code">Scholarships Due</div>
+                <div class="calendar-course-type">Major Awards</div>
+              </div>
+              <div>
+                <div class="calendar-course-time">Until 4:30PM</div>
+                <div class="calendar-course-location">Student Awards</div>
+              </div>
+            </div>
+          </div>
+          <div class="calendar-time-slot"></div>
+          <div class="calendar-time-slot"></div>
+          
+          <!-- Afternoon -->
+          <div class="calendar-time-header">4:00PM</div>
+          <div class="calendar-time-slot"></div>
+          <div class="calendar-time-slot"></div>
+          <div class="calendar-time-slot"></div>
+          <div class="calendar-time-slot">
+            <div class="calendar-course-event" style="border-left-color: var(--danger-color);">
+              <div>
+                <div class="calendar-course-code">Add/Drop Ends</div>
+                <div class="calendar-course-type">Winter Courses</div>
+              </div>
+              <div>
+                <div class="calendar-course-time">Until 11:59PM</div>
+                <div class="calendar-course-location">SOLUS</div>
+              </div>
+            </div>
+          </div>
+          <div class="calendar-time-slot"></div>
+        </div>
+      </div>
+      
+      <!-- Deadlines Section (Right) -->
+      <div class="payment-section deadlines-section">
+        <div class="payment-header">
+          <h2 class="section-title">Key Deadlines</h2>
+          <div class="calendar-filter-controls">
+            <select class="calendar-select">
+              <option>All Categories</option>
+              <option>Registration</option>
+              <option>Financial</option>
+              <option>Exams</option>
+              <option>Applications</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="history-container">
+          <!-- Registration -->
+          <div class="history-item" style="background-color: rgba(0,51,102,0.1); border-left: 4px solid var(--queens-blue);">
+            <div class="history-description">
+              <strong>Fall Registration Opens</strong>
+              <div>Priority registration for returning students</div>
+            </div>
+            <div class="history-date">Apr 1, 2024</div>
+            <div class="history-status" style="background-color: var(--queens-blue); color: white;">Registration</div>
+          </div>
+          
+          <!-- Financial -->
+          <div class="history-item" style="background-color: rgba(255,215,0,0.1); border-left: 4px solid var(--queens-gold);">
+            <div class="history-description">
+              <strong>Tuition Payment Due</strong>
+              <div>Winter term fees final deadline</div>
+            </div>
+            <div class="history-date">Apr 15, 2024</div>
+            <div class="history-status" style="background-color: var(--queens-gold); color: var(--queens-blue);">Financial</div>
+          </div>
+          
+          <!-- Exams -->
+          <div class="history-item" style="background-color: rgba(231,76,60,0.1); border-left: 4px solid var(--danger-color);">
+            <div class="history-description">
+              <strong>Final Exams Begin</strong>
+              <div>Winter term examination period</div>
+            </div>
+            <div class="history-date">Apr 22, 2024</div>
+            <div class="history-status" style="background-color: var(--danger-color); color: white;">Exams</div>
+          </div>
+          
+          <!-- Applications -->
+          <div class="history-item" style="background-color: rgba(39,174,96,0.1); border-left: 4px solid var(--success-color);">
+            <div class="history-description">
+              <strong>QUIP Deadline</strong>
+              <div>Undergraduate Internship Program</div>
+            </div>
+            <div class="history-date">May 15, 2024</div>
+            <div class="history-status" style="background-color: var(--success-color); color: white;">Applications</div>
+          </div>
+          
+          <!-- Academic -->
+          <div class="history-item" style="background-color: rgba(74,124,176,0.1); border-left: 4px solid var(--queens-light-blue);">
+            <div class="history-description">
+              <strong>Summer Add/Drop Ends</strong>
+              <div>Last day to modify summer courses</div>
+            </div>
+            <div class="history-date">May 20, 2024</div>
+            <div class="history-status" style="background-color: var(--queens-light-blue); color: white;">Academic</div>
+          </div>
+          
+          <div class="history-item" style="background-color: rgba(0,51,102,0.1); border-left: 4px solid var(--queens-blue);">
+            <div class="history-description">
+              <strong>Graduation Applications Due</strong>
+              <div>For Spring convocation</div>
+            </div>
+            <div class="history-date">Jun 1, 2024</div>
+            <div class="history-status" style="background-color: var(--queens-blue); color: white;">Academic</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Toggle active calendar view
+    document.querySelectorAll('.calendar-button').forEach(button => {
+      button.addEventListener('click', function() {
+        document.querySelectorAll('.calendar-button').forEach(btn => {
+          btn.classList.remove('active');
+        });
+        this.classList.add('active');
+      });
+    });
+    
+    // Filter deadlines
+    document.querySelector('.calendar-select').addEventListener('change', function() {
+      const category = this.value;
+      const items = document.querySelectorAll('.history-item');
+      
+      items.forEach(item => {
+        if (category === 'All Categories') {
+          item.style.display = 'grid';
+        } else {
+          const itemCategory = item.querySelector('.history-status').textContent;
+          item.style.display = itemCategory.includes(category) ? 'grid' : 'none';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

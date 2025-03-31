@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Course Registration System</title>
-    <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart - Queen's Portal</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="sc-body">
+
+<body class="dark">
     <div class="navbar">
-        <div class="logo">Queen's Logo</div>
+        <div class="logo-container">
+          <a href="index.html" class="logo-link">
+            <img src="QueensLogo.svg" alt="Queen's University Logo" class="logo-svg">
+          </a>
+        </div>
         <div class="nav-buttons">
           <button>Notifications</button>
           <button><a href="profile.html">Profile</a></button>
-          <button><a href="Settings.html"> Settings</a></button>
-          </div>
+          <button><a href="Settings.html">Settings</a></button>
         </div>
       </div>
     
@@ -22,277 +26,236 @@
           <div class="dropdown"><button>Classes</button>
             <div class="dropdown-content">
               <a href="CourseHistory.html">Course History</a>
-              <a href="MyClasses.html">My Classes</a>
               <a href="ShoppingCart.html">Future planning</a>
             </div>
           </div>
           <div class="dropdown"><button>Finance</button>
             <div class="dropdown-content">
               <a href="MyAccount.html">My Account</a>
-              <a href="#">Financial Aid</a>
             </div>
           </div>
           <div class="dropdown"><button>Calendar</button>
             <div class="dropdown-content">
-              <a href="#">Due dates and deadlines</a>
-              <a href="#">Advance Calendar</a>
+              <a href="calendar.html">Due dates and deadlines</a>
             </div>
           </div>
           <div class="dropdown"><button>Records</button>
             <div class="dropdown-content">
-              <a href="#">Transcript</a>
-              <a href="#">Verification of Enrollment</a>
-              <a href="#">Tax forms</a>
-              <a href="#">OSAP Tuition form</a>
+              <a href="records.html">Forms</a>
             </div>
           </div>
           <div class="dropdown"><button>Help</button>
             <div class="dropdown-content">
-              <a href="#">FAQ</a>
               <a href="#">Support</a>
             </div>
           </div>
         </div>
-      </div>    
+      </div>
 
-    <div class="sc-container">
-        <div class="sc-search-filter">
-            <input type="text" id="scSearchInput" class="sc-search-input" placeholder="Search courses...">
-            <select id="scTermFilter" class="sc-term-filter">
-                <option value="all">All Terms</option>
-                <option value="fall">Fall</option>
-                <option value="winter">Winter</option>
-                <option value="summer">Summer</option>
-            </select>
-        </div>
-
-        <div class="sc-course-container">
-            <div class="sc-course-list" id="scCourseList">
-            </div>
-
-            <div class="sc-cart">
-                <h2>Your Cart</h2>
-                <div id="scCartItems">
-                    <div class="sc-empty-cart">Your cart is empty</div>
-                </div>
-                <div class="sc-cart-total">
-                    Total Credits: <span id="scTotalCredits">0</span>
-                </div>
-                <button class="sc-checkout-btn" id="scCheckoutBtn">Checkout</button>
-            </div>
-        </div>
+  <div class="sc-container">
+    <div class="sc-search-filter">
+      <input type="text" id="scSearchInput" class="sc-search-input" placeholder="Search courses...">
+      <select id="scTermFilter" class="sc-term-filter">
+        <option value="all">All Terms</option>
+        <option value="fall">Fall</option>
+        <option value="winter">Winter</option>
+        <option value="summer">Summer</option>
+      </select>
     </div>
 
-    <script>
-        // Course data from the provided file (converted to proper JSON format)
-        const scCourses = [
-            // This would contain all your courses from the file
-            // Example:
-            {
-                "Course": "Introduction to Computer Progamming",
-                "Code": "CISC 101",
-                "Credits": "3.0",
-                "Fall": "True",
-                "Winter": "True",
-                "Summer": "False",
-                "Description": "Introduction to algorithms: their definition, design, coding, and execution on computers. Intended for students who have no programming experience."
-            },
-            // Add all other courses here...
-        ];
+    <div class="sc-course-container">
+      <div class="sc-course-list" id="scCourseList"></div>
 
-        // For demo purposes, using a few sample courses
-        const scSampleCourses = [
-            {
-                "Course": "Introduction to Computer Progamming",
-                "Code": "CISC 101",
-                "Credits": "3.0",
-                "Fall": "True",
-                "Winter": "True",
-                "Summer": "False",
-                "Description": "Introduction to algorithms: their definition, design, coding, and execution on computers. Intended for students who have no programming experience."
-            },
-            {
-                "Course": "Discrete Structures",
-                "Code": "CISC 102",
-                "Credits": "3.0",
-                "Fall": "True",
-                "Winter": "True",
-                "Summer": "False",
-                "Description": "Introduction to mathematical discourse and proof methods with a focus on discrete structures."
-            },
-            {
-                "Course": "Data Structures",
-                "Code": "CISC 235",
-                "Credits": "3.0",
-                "Fall": "True",
-                "Winter": "True",
-                "Summer": "False",
-                "Description": "Design and implementation of advanced data structures and related algorithms."
-            }
-        ];
+      <div class="sc-cart">
+        <h2>Your Cart</h2>
+        <div id="scCartItems">
+          <div class="sc-empty-cart">Your cart is empty</div>
+        </div>
+        <div class="sc-cart-total">
+          Total Credits: <span id="scTotalCredits">0</span>
+        </div>
+        <button class="sc-checkout-btn" id="scCheckoutBtn">Checkout</button>
+      </div>
+    </div>
+  </div>
 
-        // Shopping cart array
-        let scCart = [];
+  <script>
+    const scSampleCourses = [
+      {
+        "Course": "Introduction to Computer Progamming",
+        "Code": "CISC 101",
+        "Credits": "3.0",
+        "Fall": "True",
+        "Winter": "True",
+        "Summer": "False",
+        "Description": "Introduction to algorithms: their definition, design, coding, and execution on computers. Intended for students who have no programming experience."
+      },
+      {
+        "Course": "Discrete Structures",
+        "Code": "CISC 102",
+        "Credits": "3.0",
+        "Fall": "True",
+        "Winter": "True",
+        "Summer": "False",
+        "Description": "Introduction to mathematical discourse and proof methods with a focus on discrete structures."
+      },
+      {
+        "Course": "Data Structures",
+        "Code": "CISC 235",
+        "Credits": "3.0",
+        "Fall": "True",
+        "Winter": "True",
+        "Summer": "False",
+        "Description": "Design and implementation of advanced data structures and related algorithms."
+      }
+    ];
 
-        // DOM elements
-        const scCourseListElement = document.getElementById('scCourseList');
-        const scCartItemsElement = document.getElementById('scCartItems');
-        const scTotalCreditsElement = document.getElementById('scTotalCredits');
-        const scSearchInput = document.getElementById('scSearchInput');
-        const scTermFilter = document.getElementById('scTermFilter');
-        const scCheckoutBtn = document.getElementById('scCheckoutBtn');
+    let scCart = [];
+    const scCourseListElement = document.getElementById('scCourseList');
+    const scCartItemsElement = document.getElementById('scCartItems');
+    const scTotalCreditsElement = document.getElementById('scTotalCredits');
+    const scSearchInput = document.getElementById('scSearchInput');
+    const scTermFilter = document.getElementById('scTermFilter');
+    const scCheckoutBtn = document.getElementById('scCheckoutBtn');
 
-        // Display courses
-        function scDisplayCourses(coursesToDisplay) {
-            scCourseListElement.innerHTML = '';
-            
-            if (coursesToDisplay.length === 0) {
-                scCourseListElement.innerHTML = '<div class="sc-course-card">No courses found matching your criteria.</div>';
-                return;
-            }
+    function scDisplayCourses(coursesToDisplay) {
+      scCourseListElement.innerHTML = '';
+      
+      if (coursesToDisplay.length === 0) {
+        scCourseListElement.innerHTML = '<div class="sc-course-card">No courses found matching your criteria.</div>';
+        return;
+      }
 
-            coursesToDisplay.forEach(course => {
-                const courseCard = document.createElement('div');
-                courseCard.className = 'sc-course-card';
-                
-                const terms = [];
-                if (course.Fall === "True") terms.push('Fall');
-                if (course.Winter === "True") terms.push('Winter');
-                if (course.Summer === "True") terms.push('Summer');
-                
-                const isInCart = scCart.some(item => item.Code === course.Code);
-                
-                courseCard.innerHTML = `
-                    <div class="sc-course-header">
-                        <span class="sc-course-code">${course.Code}</span>
-                        <span class="sc-course-credits">${course.Credits} credits</span>
-                    </div>
-                    <div class="sc-course-title">${course.Course}</div>
-                    <div class="sc-course-description">${course.Description}</div>
-                    <div class="sc-course-terms">
-                        ${terms.map(term => `
-                            <span class="sc-term-badge sc-term-${term.toLowerCase()}">${term}</span>
-                        `).join('')}
-                    </div>
-                    <button class="${isInCart ? 'sc-remove-from-cart' : 'sc-add-to-cart'}" 
-                            data-code="${course.Code}">
-                        ${isInCart ? 'Remove from Cart' : 'Add to Cart'}
-                    </button>
-                `;
-                
-                scCourseListElement.appendChild(courseCard);
-            });
+      coursesToDisplay.forEach(course => {
+        const courseCard = document.createElement('div');
+        courseCard.className = 'sc-course-card';
+        
+        const terms = [];
+        if (course.Fall === "True") terms.push('Fall');
+        if (course.Winter === "True") terms.push('Winter');
+        if (course.Summer === "True") terms.push('Summer');
+        
+        const isInCart = scCart.some(item => item.Code === course.Code);
+        
+        courseCard.innerHTML = `
+          <div class="sc-course-header">
+            <span class="sc-course-code">${course.Code}</span>
+            <span class="sc-course-credits">${course.Credits} credits</span>
+          </div>
+          <div class="sc-course-title">${course.Course}</div>
+          <div class="sc-course-description">${course.Description}</div>
+          <div class="sc-course-terms">
+            ${terms.map(term => `
+              <span class="sc-term-badge sc-term-${term.toLowerCase()}">${term}</span>
+            `).join('')}
+          </div>
+          <button class="${isInCart ? 'sc-remove-from-cart' : 'sc-add-to-cart'}" 
+                  data-code="${course.Code}">
+            ${isInCart ? 'Remove from Cart' : 'Add to Cart'}
+          </button>
+        `;
+        
+        scCourseListElement.appendChild(courseCard);
+      });
+    }
+
+    function scUpdateCart() {
+      if (scCart.length === 0) {
+        scCartItemsElement.innerHTML = '<div class="sc-empty-cart">Your cart is empty</div>';
+        scTotalCreditsElement.textContent = '0';
+        return;
+      }
+      
+      scCartItemsElement.innerHTML = '';
+      let totalCredits = 0;
+      
+      scCart.forEach(item => {
+        totalCredits += parseFloat(item.Credits);
+        const cartItem = document.createElement('div');
+        cartItem.className = 'sc-cart-item';
+        cartItem.innerHTML = `
+          <div>
+            <strong>${item.Code}</strong>
+            <div>${item.Course}</div>
+          </div>
+          <div>
+            <span>${item.Credits} cr</span>
+            <button class="sc-remove-from-cart" data-code="${item.Code}">×</button>
+          </div>
+        `;
+        scCartItemsElement.appendChild(cartItem);
+      });
+      
+      scTotalCreditsElement.textContent = totalCredits.toFixed(1);
+    }
+
+    function scFilterCourses() {
+      const searchTerm = scSearchInput.value.toLowerCase();
+      const selectedTerm = scTermFilter.value;
+      
+      const filteredCourses = scSampleCourses.filter(course => {
+        const matchesSearch = 
+          course.Course.toLowerCase().includes(searchTerm) || 
+          course.Code.toLowerCase().includes(searchTerm) ||
+          course.Description.toLowerCase().includes(searchTerm);
+        let matchesTerm = true;
+        if (selectedTerm !== 'all') {
+          matchesTerm = course[selectedTerm.charAt(0).toUpperCase() + selectedTerm.slice(1)] === "True";
         }
+        return matchesSearch && matchesTerm;
+      });
+      
+      scDisplayCourses(filteredCourses);
+    }
 
-        // Update cart display
-        function scUpdateCart() {
-            if (scCart.length === 0) {
-                scCartItemsElement.innerHTML = '<div class="sc-empty-cart">Your cart is empty</div>';
-                scTotalCreditsElement.textContent = '0';
-                return;
-            }
-            
-            scCartItemsElement.innerHTML = '';
-            
-            let totalCredits = 0;
-            
-            scCart.forEach(item => {
-                totalCredits += parseFloat(item.Credits);
-                
-                const cartItem = document.createElement('div');
-                cartItem.className = 'sc-cart-item';
-                cartItem.innerHTML = `
-                    <div>
-                        <strong>${item.Code}</strong>
-                        <div>${item.Course}</div>
-                    </div>
-                    <div>
-                        <span>${item.Credits} cr</span>
-                        <button class="sc-remove-from-cart" data-code="${item.Code}">×</button>
-                    </div>
-                `;
-                
-                scCartItemsElement.appendChild(cartItem);
-            });
-            
-            scTotalCreditsElement.textContent = totalCredits.toFixed(1);
+    scCourseListElement.addEventListener('click', function(e) {
+      if (e.target.classList.contains('sc-add-to-cart')) {
+        const courseCode = e.target.getAttribute('data-code');
+        const courseToAdd = scSampleCourses.find(course => course.Code === courseCode);
+        if (courseToAdd) {
+          scCart.push(courseToAdd);
+          scUpdateCart();
+          scDisplayCourses(scSampleCourses);
         }
-
-        // Filter courses based on search and term
-        function scFilterCourses() {
-            const searchTerm = scSearchInput.value.toLowerCase();
-            const selectedTerm = scTermFilter.value;
-            
-            const filteredCourses = scSampleCourses.filter(course => {
-                // Search filter
-                const matchesSearch = 
-                    course.Course.toLowerCase().includes(searchTerm) || 
-                    course.Code.toLowerCase().includes(searchTerm) ||
-                    course.Description.toLowerCase().includes(searchTerm);
-                
-                // Term filter
-                let matchesTerm = true;
-                if (selectedTerm !== 'all') {
-                    matchesTerm = course[selectedTerm.charAt(0).toUpperCase() + selectedTerm.slice(1)] === "True";
-                }
-                
-                return matchesSearch && matchesTerm;
-            });
-            
-            scDisplayCourses(filteredCourses);
-        }
-
-        // Event listeners
-        scCourseListElement.addEventListener('click', function(e) {
-            if (e.target.classList.contains('sc-add-to-cart')) {
-                const courseCode = e.target.getAttribute('data-code');
-                const courseToAdd = scSampleCourses.find(course => course.Code === courseCode);
-                
-                if (courseToAdd) {
-                    scCart.push(courseToAdd);
-                    scUpdateCart();
-                    scDisplayCourses(scSampleCourses);
-                }
-            }
-            
-            if (e.target.classList.contains('sc-remove-from-cart')) {
-                const courseCode = e.target.getAttribute('data-code');
-                scCart = scCart.filter(item => item.Code !== courseCode);
-                scUpdateCart();
-                scDisplayCourses(scSampleCourses);
-            }
-        });
-
-        scCartItemsElement.addEventListener('click', function(e) {
-            if (e.target.classList.contains('sc-remove-from-cart')) {
-                const courseCode = e.target.getAttribute('data-code');
-                scCart = scCart.filter(item => item.Code !== courseCode);
-                scUpdateCart();
-                scDisplayCourses(scSampleCourses);
-            }
-        });
-
-        scSearchInput.addEventListener('input', scFilterCourses);
-        scTermFilter.addEventListener('change', scFilterCourses);
-
-        scCheckoutBtn.addEventListener('click', function() {
-            if (scCart.length === 0) {
-                alert('Your cart is empty!');
-                return;
-            }
-            
-            const courseList = scCart.map(item => `${item.Code} - ${item.Course}`).join('\n');
-            const totalCredits = scCart.reduce((sum, item) => sum + parseFloat(item.Credits), 0);
-            
-            alert(`Checkout complete!\n\nCourses registered:\n${courseList}\n\nTotal credits: ${totalCredits.toFixed(1)}`);
-            scCart = [];
-            scUpdateCart();
-            scDisplayCourses(scSampleCourses);
-        });
-
-        // Initial display
-        scDisplayCourses(scSampleCourses);
+      }
+      
+      if (e.target.classList.contains('sc-remove-from-cart')) {
+        const courseCode = e.target.getAttribute('data-code');
+        scCart = scCart.filter(item => item.Code !== courseCode);
         scUpdateCart();
-    </script>
+        scDisplayCourses(scSampleCourses);
+      }
+    });
+
+    scCartItemsElement.addEventListener('click', function(e) {
+      if (e.target.classList.contains('sc-remove-from-cart')) {
+        const courseCode = e.target.getAttribute('data-code');
+        scCart = scCart.filter(item => item.Code !== courseCode);
+        scUpdateCart();
+        scDisplayCourses(scSampleCourses);
+      }
+    });
+
+    scSearchInput.addEventListener('input', scFilterCourses);
+    scTermFilter.addEventListener('change', scFilterCourses);
+
+    scCheckoutBtn.addEventListener('click', function() {
+      if (scCart.length === 0) {
+        alert('Your cart is empty!');
+        return;
+      }
+      
+      const courseList = scCart.map(item => `${item.Code} - ${item.Course}`).join('\n');
+      const totalCredits = scCart.reduce((sum, item) => sum + parseFloat(item.Credits), 0);
+      
+      alert(`Checkout complete!\n\nCourses registered:\n${courseList}\n\nTotal credits: ${totalCredits.toFixed(1)}`);
+      scCart = [];
+      scUpdateCart();
+      scDisplayCourses(scSampleCourses);
+    });
+
+    scDisplayCourses(scSampleCourses);
+    scUpdateCart();
+  </script>
 </body>
 </html>

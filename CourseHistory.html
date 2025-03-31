@@ -1,298 +1,746 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Queen's Portal</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Queen's University Portal - Academic Progress</title>
+  <meta name="description" content="Queen's University student portal for tracking academic progress and course information">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    
+    button {
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: inherit;
+    }
+    
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+    
+    /* ===== Layout ===== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(90deg, #002244, #003366);
+      padding: 10px 20px;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      border-bottom: 2px solid var(--queens-blue);
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 10px;
+      margin-right: 1.5%;
+    }
+
+    .nav-buttons button {
+      background-color: var(--button-bg);
+      color: var(--button-text);
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .nav-buttons button:hover {
+      background-color: var(--hover-bg);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .sticky-bar {
+      position: fixed;
+      top: 55px;
+      left: 0;
+      width: 100%;
+      background-color: var(--sticky-bg);
+      color: var(--text-color);
+      padding: 10px;
+      z-index: 999;
+      display: flex;
+      justify-content: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      border-bottom: 1px solid var(--queens-blue);
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown button {
+      background-color: var(--button-bg);
+      color: var(--button-text);
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      position: relative;
+      margin: 0 5px;
+    }
+
+    .dropdown button:hover {
+      background-color: var(--hover-bg);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .dropdown button::after {
+      content: "▼";
+      font-size: 0.8em;
+      margin-left: 8px;
+      color: var(--highlight-color);
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: var(--dropdown-bg);
+      min-width: 220px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 99999;
+      border-radius: 6px;
+      top: 100%;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      border: 1px solid var(--border-color);
+      padding: 5px 0;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .dropdown-content a {
+      color: var(--text-color);
+      padding: 12px 20px;
+      text-decoration: none;
+      display: block;
+      transition: all 0.2s ease;
+      font-size: 0.95em;
+    }
+
+    .dropdown-content a:hover {
+      background-color: var(--hover-bg);
+      color: white;
+      padding-left: 25px;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      padding: 5px 15px;
+    }
+
+    .logo-link {
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+
+    .logo-svg {
+      height: 32px;
+      width: auto;
+      filter: drop-shadow(0 0 2px rgba(255,255,255,0.3));
+    }
+    
+    /* ===== Progress Section ===== */
+    .progress-summary {
+      margin-bottom: 2rem;
+    }
+    
+    .section-heading {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--queens-blue);
+    }
+    
+    .progress-container {
+      width: 100%;
+      height: 30px;
+      background-color: var(--sticky-bg);
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 1rem 0;
+      border: 1px solid var(--queens-blue);
+    }
+    
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--queens-blue), var(--queens-light-blue));
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      transition: width 0.3s ease;
+    }
+    
+    .progress-details {
+      background-color: var(--card-bg);
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      margin-top: 1rem;
+    }
+    
+    .details-summary {
+      padding: 0.75rem 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      background-color: var(--sticky-bg);
+      color: var(--text-color);
+      text-align: center;
+    }
+    
+    .details-content {
+      padding: 1rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    
+    .progress-metric {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+    
+    .metric-label {
+      font-weight: 500;
+    }
+    
+    .metric-value {
+      font-weight: bold;
+    }
+    
+    /* ===== Courses Section ===== */
+    .courses-section {
+      background-color: var(--card-bg);
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      margin-bottom: 2rem;
+      overflow: hidden;
+    }
+    
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 1.5rem;
+      background: linear-gradient(90deg, var(--queens-blue), var(--queens-dark-blue));
+      color: white;
+    }
+    
+    .collapse-toggle {
+      background-color: rgba(255, 255, 255, 0.2);
+      color: white;
+      width: 24px;
+      height: 24px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+    
+    .section-content {
+      padding: 1rem;
+    }
+    
+    .course-year-group {
+      margin-bottom: 2rem;
+    }
+    
+    .year-heading {
+      font-size: 1.25rem;
+      margin: 1rem 0;
+      color: var(--queens-blue);
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--queens-gold);
+    }
+    
+    .course-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    
+    .table-header {
+      display: none;
+    }
+    
+    .table-row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0.5rem;
+      padding: 0.75rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+    
+    .table-cell {
+      padding: 0.5rem;
+    }
+    
+    .table-cell[data-label]::before {
+      content: attr(data-label);
+      font-weight: bold;
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+    
+    /* Status badges */
+    .status-taken {
+      background-color: var(--success-color);
+      color: white;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.875rem;
+      text-align: center;
+    }
+    
+    .status-in-progress {
+      background-color: var(--queens-gold);
+      color: var(--queens-blue);
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.875rem;
+      text-align: center;
+    }
+    
+    .status-planned {
+      background-color: var(--queens-light-blue);
+      color: white;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.875rem;
+      text-align: center;
+    }
+    
+    /* ===== Responsive Styles ===== */
+    @media (min-width: 768px) {
+      .table-header {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 0.5rem;
+        padding: 0.75rem;
+        background-color: var(--sticky-bg);
+        font-weight: bold;
+        border-bottom: 2px solid var(--queens-blue);
+      }
+      
+      .table-cell[data-label]::before {
+        display: none;
+      }
+      
+      .details-content {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .table-row {
+        grid-template-columns: 1fr;
+        gap: 0.25rem;
+      }
+      
+      .nav-buttons {
+        flex-wrap: wrap;
+      }
+      
+      .portal-content {
+        padding: 6rem 1rem 2rem;
+      }
+    }
+
+    /* Main content area */
+    .portal-content {
+      padding-top: calc(55px + 6vi);
+      padding-bottom: 40px;
+      width: 90%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+  </style>
 </head>
 
-<body class="dark-theme">
+<body class="dark">
   <div class="navbar">
-    <a href="index.html" class="logo-button">
-      <img src="path-to-your-logo.png" alt="Queen's Logo" class="logo-img"/>
-    </a>
+    <div class="logo-container">
+      <a href="index.html" class="logo-link">
+        <img src="QueensLogo.svg" alt="Queen's University Logo" class="logo-svg">
+      </a>
+    </div>
     <div class="nav-buttons">
       <button>Notifications</button>
-      <button>Profile</button>
+      <button><a href="profile.html">Profile</a></button>
       <button><a href="Settings.html">Settings</a></button>
     </div>
   </div>
 
   <div class="sticky-bar">
     <div class="nav-buttons">
-      <div class="dropdown">
-        <button>Classes</button>
+      <div class="dropdown"><button>Classes</button>
         <div class="dropdown-content">
-          <a href="#">Course History</a>
-          <a href="#">My Classes</a>
-          <a href="#">Future planning</a>
+          <a href="CourseHistory.html">Course History</a>
+          <a href="ShoppingCart.html">Future planning</a>
         </div>
       </div>
-      <div class="dropdown">
-        <button>Finance</button>
+      <div class="dropdown"><button>Finance</button>
         <div class="dropdown-content">
-          <a href="#">My Account</a>
-          <a href="#">Payment Options</a>
-          <a href="#">Financial Aid</a>
+          <a href="MyAccount.html">My Account</a>
         </div>
       </div>
-      <div class="dropdown">
-        <button>Calendar</button>
+      <div class="dropdown"><button>Calendar</button>
         <div class="dropdown-content">
-          <a href="#">Due dates and deadlines</a>
-          <a href="#">Advance Calendar</a>
+          <a href="calendar.html">Due dates and deadlines</a>
         </div>
       </div>
-      <div class="dropdown">
-        <button>Records</button>
+      <div class="dropdown"><button>Records</button>
         <div class="dropdown-content">
-          <a href="#">Transcript</a>
-          <a href="#">Verification of Enrollment</a>
-          <a href="#">Tax forms</a>
-          <a href="#">OSAP Tuition form</a>
+          <a href="records.html">Forms</a>
         </div>
       </div>
-      <div class="dropdown">
-        <button>Help</button>
+      <div class="dropdown"><button>Help</button>
         <div class="dropdown-content">
-          <a href="#">FAQ</a>
           <a href="#">Support</a>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="content">
-
-    <div class="progress-container">
-        <div class="progress-bar" id="progress-bar" style="width: 50%;">16%</div>
-    </div>
-    <div class="progress-content-box">
-        <div class="progress-content-header" onclick="toggleProgressContent()">Details</div>
-        <div class="progress-content" id="progress-content">
-            <span class="settings-text"><b>Total Credits: 12.00/48.00</b></span> <div class="settings-spacer">−</div>
-            <span class="settings-text"><b>Electives: 3.00/12.00</b></span> <div class="settings-spacer">−</div>
-            <span class="settings-text"><b>Type A Credit: 0.00/6.00</b></span> <div class="settings-spacer">−</div>
-            <span class="settings-text"><b>Type B Credit: 0.00/4.00</b></span> 
+  <!-- Main content area -->
+  <main class="portal-content">
+    <!-- Progress summary section -->
+    <section class="progress-summary" aria-labelledby="progress-heading">
+      <h2 id="progress-heading" class="section-heading">Academic Progress</h2>
+      
+      <div class="progress-container">
+        <div class="progress-bar" id="progress-bar" style="width: 33%;" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100">
+          <span class="progress-text">33% Complete</span>
         </div>
-    </div>
-    
-    
-    
-
-
-    <div class="collapsible-box large">
-        <div class="collapsible-header">
-          <div class="box-title">Core Courses</div>
-          <button class="collapse-toggle" onclick="toggleBox(this)">−</button>
+      </div>
+      
+      <details class="progress-details">
+        <summary class="details-summary">View Details</summary>
+        <div class="details-content">
+          <div class="progress-metric">
+            <span class="metric-label">Total Credits:</span>
+            <span class="metric-value">12.00/48.00</span>
+          </div>
+          <div class="progress-metric">
+            <span class="metric-label">Electives:</span>
+            <span class="metric-value">3.00/12.00</span>
+          </div>
+          <div class="progress-metric">
+            <span class="metric-label">Type A Credit:</span>
+            <span class="metric-value">0.00/6.00</span>
+          </div>
+          <div class="progress-metric">
+            <span class="metric-label">Type B Credit:</span>
+            <span class="metric-value">0.00/4.00</span>
+          </div>
         </div>
+      </details>
+    </section>
 
-        <div class="collapsible-content">
-          <div class="settings-box">      
-            <div class="settings-header">First Year</div>
-            <div class="settings-row">
-                <span class="settings-text"><b>Code</b></span>
-                <div class="settings-spacer">−</div>
-                <span class="settings-text"><b>Course</b></span>
-                <div class="settings-spacer">−</div>
-                <span class="settings-text"><b>Grade</b></span>
-                <div class="settings-spacer">−</div>
-                <span class="settings-text"><b>Credits</b></span>
-                <div class="settings-spacer">−</div>
-                <span class="settings-text"><b>Status</b></span>
-            </div>   
-            <div class="settings-row">
-                <span class="settings-text">APSC 101</span>
-                <div class="settings-spacer">−</div>
-                <span class="settings-text">Engineering Design & Practice</span>
-                <div class="settings-spacer">−</div>
-                <span class="settings-text">A-</span>
-                <div class="settings-spacer">−</div>
-                <span class="settings-text">3.50</span>
-                <div class="settings-spacer">−</div>
-                <span class="settings-text">Taken</span>
-            </div>  
-            <div class="settings-row">
-                <span class="settings-text">APSC 102</span>
-                <div class="settings-spacer">−</div>
-                <span class="settings-text">Experimentation</span>
-                <div class="settings-spacer">−</div>
-                <span class="settings-text">A+</span>
-                <div class="settings-spacer">−</div>
-                <span class="settings-text">2.00</span>
-                <div class="settings-spacer">−</div>
-                <span class="settings-text">Taken</span>
-            </div>  
-            <div class="settings-row">
-                <span class="settings-text">APSC 103</span>
-                <div class="settings-spacer">−</div>
-                <span class="settings-text">Eng Client Based Design Project</span><div class="settings-spacer">−</div>
-                <span class="settings-text">A</span><div class="settings-spacer">−</div>
-                <span class="settings-text">3.50</span><div class="settings-spacer">−</div>
-                <span class="settings-text">Taken</span>
-            </div>  
-            <div class="settings-row">
-                <span class="settings-text">APSC 111</span><div class="settings-spacer">−</div>
-                <span class="settings-text">Physics I</span><div class="settings-spacer">−</div>
-                <span class="settings-text">A−</span><div class="settings-spacer">−</div>
-                <span class="settings-text">3.30</span><div class="settings-spacer">−</div>
-                <span class="settings-text">Taken</span>
-            </div>  
-            <div class="settings-row">
-                <span class="settings-text">APSC 112</span><div class="settings-spacer">−</div>
-                <span class="settings-text">Physics II</span><div class="settings-spacer">−</div>
-                <span class="settings-text">−</span><div class="settings-spacer">−</div>
-                <span class="settings-text">3.30</span><div class="settings-spacer">−</div>
-                <span class="settings-text">In Progress</span>
-            </div>  
-            <div class="settings-row">
-                <span class="settings-text">APSC 131</span><div class="settings-spacer">−</div>
-                <span class="settings-text">Chemistry I</span><div class="settings-spacer">−</div>
-                <span class="settings-text">C-</span><div class="settings-spacer">−</div>
-                <span class="settings-text">3.30</span><div class="settings-spacer">−</div>
-                <span class="settings-text">Taken</span>
-            </div>  
-            <div class="settings-row">
-                <span class="settings-text">APSC 132</span><div class="settings-spacer">−</div>
-                <span class="settings-text">Chemistry II</span><div class="settings-spacer">−</div>
-                <span class="settings-text">−</span><div class="settings-spacer">−</div>
-                <span class="settings-text">3.30</span><div class="settings-spacer">−</div>
-                <span class="settings-text">In Progress</span>
-            </div>   
-            <div class="settings-row">
-                <span class="settings-text">APSC 143</span><div class="settings-spacer">−</div>
-                <span class="settings-text">Intro to Computer Programming</span><div class="settings-spacer">−</div>
-                <span class="settings-text">−</span><div class="settings-spacer">−</div>
-                <span class="settings-text">3.30</span><div class="settings-spacer">−</div>
-                <span class="settings-text">In Progress</span>
-            </div>   
-            <div class="settings-row">
-                <span class="settings-text">APSC 151</span><div class="settings-spacer">−</div>
-                <span class="settings-text">Earth System Engieering</span><div class="settings-spacer">−</div>
-                <span class="settings-text">B-</span><div class="settings-spacer">−</div>
-                <span class="settings-text">3.30</span><div class="settings-spacer">−</div>
-                <span class="settings-text">Taken</span>
-            </div> 
-            <div class="settings-row">
-                <span class="settings-text">APSC 162</span><div class="settings-spacer">−</div>
-                <span class="settings-text">Engineering Graphics</span><div class="settings-spacer">−</div>
-                <span class="settings-text">−</span><div class="settings-spacer">−</div>
-                <span class="settings-text">2.50</span><div class="settings-spacer">−</div>
-                <span class="settings-text">In Progress</span>
-            </div>   
-            <div class="settings-row">
-                <span class="settings-text">APSC 171</span><div class="settings-spacer">−</div>
-                <span class="settings-text">Calculus I</span><div class="settings-spacer">−</div>
-                <span class="settings-text">B+</span><div class="settings-spacer">−</div>
-                <span class="settings-text">3.30</span><div class="settings-spacer">−</div>
-                <span class="settings-text">Taken</span>
-            </div>   
-            <div class="settings-row">
-                <span class="settings-text">APSC 172</span><div class="settings-spacer">−</div>
-                <span class="settings-text">Calculus II</span><div class="settings-spacer">−</div>
-                <span class="settings-text">−</span><div class="settings-spacer">−</div>
-                <span class="settings-text">3.30</span><div class="settings-spacer">−</div>
-                <span class="settings-text">In Progress</span>
-            </div>  
-
-            <div class="settings-header">Second Year</div> 
-            <div class="settings-row">
-                <span class="settings-text"><b>Code</b></span><div class="settings-spacer">−</div>
-                <span class="settings-text"><b>Course</b></span><div class="settings-spacer">−</div>
-                <span class="settings-text"><b>Grade</b></span><div class="settings-spacer">−</div>
-                <span class="settings-text"><b>Credits</b></span><div class="settings-spacer">−</div>
-                <span class="settings-text"><b>Status</b></span>
-            </div>   
-            <div class="settings-row">
-                <span class="settings-text">MTHE 235</span><div class="settings-spacer">−</div>
-                <span class="settings-text">Diff Equations For ELEC & Comp</span><div class="settings-spacer">−</div>
-                <span class="settings-text">−</span><div class="settings-spacer">−</div>
-                <span class="settings-text">3.50</span><div class="settings-spacer">−</div>
-                <span class="settings-text">Planned</span>
-            </div>              
-            <div class="settings-row">
-                <span class="settings-text">ELEC 221</span><div class="settings-spacer">−</div>
-                <span class="settings-text">Electric Circuits</span><div class="settings-spacer">−</div>
-                <span class="settings-text">−</span><div class="settings-spacer">−</div>
-                <span class="settings-text">4.25</span><div class="settings-spacer">−</div>
-                <span class="settings-text">Planned</span>
-            </div>               
-            <div class="settings-row">
-                <span class="settings-text">ELEC 221</span><div class="settings-spacer">−</div>
-                <span class="settings-text">Electric Circuits</span><div class="settings-spacer">−</div>
-                <span class="settings-text">−</span><div class="settings-spacer">−</div>
-                <span class="settings-text">4.25</span><div class="settings-spacer">−</div>
-                <span class="settings-text">Planned</span>
-            </div>  
-            <div class="settings-row">
-                <span class="settings-text">ELEC 270</span><div class="settings-spacer">−</div>
-                <span class="settings-text">Discrete Math W. Comp Eng Appl</span><div class="settings-spacer">−</div>
-                <span class="settings-text">−</span><div class="settings-spacer">−</div>
-                <span class="settings-text">3.50</span><div class="settings-spacer">−</div>
-                <span class="settings-text">Planned</span>
-            </div>  
-            <div class="settings-row">
-                <span class="settings-text">ELEC 274</span><div class="settings-spacer">−</div>
-                <span class="settings-text">Computer Architecture</span><div class="settings-spacer">−</div>
-                <span class="settings-text">−</span><div class="settings-spacer">−</div>
-                <span class="settings-text">4.00</span><div class="settings-spacer">−</div>
-                <span class="settings-text">Planned</span>
-            </div>  
-            <div class="settings-row">
-                <span class="settings-text">ELEC 279</span><div class="settings-spacer">−</div>
-                <span class="settings-text">Object Oriented Programming</span><div class="settings-spacer">−</div>
-                <span class="settings-text">−</span><div class="settings-spacer">−</div>
-                <span class="settings-text">4.00</span><div class="settings-spacer">−</div>
-                <span class="settings-text">Planned</span>
+    <!-- Core courses section -->
+    <section class="courses-section" aria-labelledby="core-courses-heading">
+      <div class="section-header">
+        <h2 id="core-courses-heading" class="section-heading">Core Courses</h2>
+        <button class="collapse-toggle" aria-expanded="true" aria-controls="core-courses-content">−</button>
+      </div>
+      
+      <div id="core-courses-content" class="section-content">
+        <div class="course-year-group">
+          <h3 class="year-heading">First Year</h3>
+          
+          <div class="course-table">
+            <div class="table-header">
+              <div class="table-cell">Code</div>
+              <div class="table-cell">Course</div>
+              <div class="table-cell">Grade</div>
+              <div class="table-cell">Credits</div>
+              <div class="table-cell">Status</div>
             </div>
-            <div class="settings-row">
-                <span class="settings-text">ELEC 280</span><div class="settings-spacer">−</div>
-                <span class="settings-text">Fund. Of Electromagnetics</span><div class="settings-spacer">−</div>
-                <span class="settings-text">−</span><div class="settings-spacer">−</div>
-                <span class="settings-text">3.75</span><div class="settings-spacer">−</div>
-                <span class="settings-text">Planned</span>
-            </div>  
-            <div class="settings-row">
-                <span class="settings-text">ELEC 290</span><div class="settings-spacer">−</div>
-                <span class="settings-text">ECE Design and Practice</span><div class="settings-spacer">−</div>
-                <span class="settings-text">−</span><div class="settings-spacer">−</div>
-                <span class="settings-text">5.00</span><div class="settings-spacer">−</div>
-                <span class="settings-text">Planned</span>
-            </div>  
-            <div class="settings-row">
-                <span class="settings-text">ELEC 292</span><div class="settings-spacer">−</div>
-                <span class="settings-text">Introduction to Data Science</span><div class="settings-spacer">−</div>
-                <span class="settings-text">−</span><div class="settings-spacer">−</div>
-                <span class="settings-text">3.00</span><div class="settings-spacer">−</div>
-                <span class="settings-text">Planned</span>
-            </div>  
+            
+            <div class="table-row">
+              <div class="table-cell" data-label="Code">APSC 101</div>
+              <div class="table-cell" data-label="Course">Engineering Design & Practice</div>
+              <div class="table-cell" data-label="Grade">A-</div>
+              <div class="table-cell" data-label="Credits">3.50</div>
+              <div class="table-cell status-taken" data-label="Status">Taken</div>
+            </div>
+            
+            <div class="table-row">
+              <div class="table-cell" data-label="Code">APSC 102</div>
+              <div class="table-cell" data-label="Course">Experimentation</div>
+              <div class="table-cell" data-label="Grade">A+</div>
+              <div class="table-cell" data-label="Credits">2.00</div>
+              <div class="table-cell status-taken" data-label="Status">Taken</div>
+            </div>
+            
+            <div class="table-row">
+              <div class="table-cell" data-label="Code">APSC 103</div>
+              <div class="table-cell" data-label="Course">Eng Client Based Design Project</div>
+              <div class="table-cell" data-label="Grade">A</div>
+              <div class="table-cell" data-label="Credits">3.50</div>
+              <div class="table-cell status-taken" data-label="Status">Taken</div>
+            </div>
+            
+            <div class="table-row">
+              <div class="table-cell" data-label="Code">APSC 111</div>
+              <div class="table-cell" data-label="Course">Physics I</div>
+              <div class="table-cell" data-label="Grade">A−</div>
+              <div class="table-cell" data-label="Credits">3.30</div>
+              <div class="table-cell status-taken" data-label="Status">Taken</div>
+            </div>
+            
+            <div class="table-row">
+              <div class="table-cell" data-label="Code">APSC 112</div>
+              <div class="table-cell" data-label="Course">Physics II</div>
+              <div class="table-cell" data-label="Grade">−</div>
+              <div class="table-cell" data-label="Credits">3.30</div>
+              <div class="table-cell status-in-progress" data-label="Status">In Progress</div>
+            </div>
+            
+            <div class="table-row">
+              <div class="table-cell" data-label="Code">APSC 131</div>
+              <div class="table-cell" data-label="Course">Chemistry I</div>
+              <div class="table-cell" data-label="Grade">C-</div>
+              <div class="table-cell" data-label="Credits">3.30</div>
+              <div class="table-cell status-taken" data-label="Status">Taken</div>
+            </div>
+            
+            <div class="table-row">
+              <div class="table-cell" data-label="Code">APSC 132</div>
+              <div class="table-cell" data-label="Course">Chemistry II</div>
+              <div class="table-cell" data-label="Grade">−</div>
+              <div class="table-cell" data-label="Credits">3.30</div>
+              <div class="table-cell status-in-progress" data-label="Status">In Progress</div>
+            </div>
+            
+            <div class="table-row">
+              <div class="table-cell" data-label="Code">APSC 143</div>
+              <div class="table-cell" data-label="Course">Intro to Computer Programming</div>
+              <div class="table-cell" data-label="Grade">−</div>
+              <div class="table-cell" data-label="Credits">3.30</div>
+              <div class="table-cell status-in-progress" data-label="Status">In Progress</div>
+            </div>
+            
+            <div class="table-row">
+              <div class="table-cell" data-label="Code">APSC 151</div>
+              <div class="table-cell" data-label="Course">Earth System Engineering</div>
+              <div class="table-cell" data-label="Grade">B-</div>
+              <div class="table-cell" data-label="Credits">3.30</div>
+              <div class="table-cell status-taken" data-label="Status">Taken</div>
+            </div>
+            
+            <div class="table-row">
+              <div class="table-cell" data-label="Code">APSC 162</div>
+              <div class="table-cell" data-label="Course">Engineering Graphics</div>
+              <div class="table-cell" data-label="Grade">−</div>
+              <div class="table-cell" data-label="Credits">2.50</div>
+              <div class="table-cell status-in-progress" data-label="Status">In Progress</div>
+            </div>
+            
+            <div class="table-row">
+              <div class="table-cell" data-label="Code">APSC 171</div>
+              <div class="table-cell" data-label="Course">Calculus I</div>
+              <div class="table-cell" data-label="Grade">B+</div>
+              <div class="table-cell" data-label="Credits">3.30</div>
+              <div class="table-cell status-taken" data-label="Status">Taken</div>
+            </div>
+            
+            <div class="table-row">
+              <div class="table-cell" data-label="Code">APSC 172</div>
+              <div class="table-cell" data-label="Course">Calculus II</div>
+              <div class="table-cell" data-label="Grade">−</div>
+              <div class="table-cell" data-label="Credits">3.30</div>
+              <div class="table-cell status-in-progress" data-label="Status">In Progress</div>
+            </div>
+          </div>
         </div>
-      </div>       
-    </div>
-
-
-    <div class="collapsible-box large">
-        <div class="collapsible-header">
-          <div class="box-title">Electives</div>
-          <button class="collapse-toggle" onclick="toggleBox(this)">−</button>
+        
+        <div class="course-year-group">
+          <h3 class="year-heading">Second Year</h3>
+          
+          <div class="course-table">
+            <div class="table-header">
+              <div class="table-cell">Code</div>
+              <div class="table-cell">Course</div>
+              <div class="table-cell">Grade</div>
+              <div class="table-cell">Credits</div>
+              <div class="table-cell">Status</div>
+            </div>
+            
+            <div class="table-row">
+              <div class="table-cell" data-label="Code">MTHE 235</div>
+              <div class="table-cell" data-label="Course">Diff Equations For ELEC & Comp</div>
+              <div class="table-cell" data-label="Grade">−</div>
+              <div class="table-cell" data-label="Credits">3.50</div>
+              <div class="table-cell status-planned" data-label="Status">Planned</div>
+            </div>
+            
+            <div class="table-row">
+              <div class="table-cell" data-label="Code">ELEC 221</div>
+              <div class="table-cell" data-label="Course">Electric Circuits</div>
+              <div class="table-cell" data-label="Grade">−</div>
+              <div class="table-cell" data-label="Credits">4.25</div>
+              <div class="table-cell status-planned" data-label="Status">Planned</div>
+            </div>
+            
+            <div class="table-row">
+              <div class="table-cell" data-label="Code">ELEC 270</div>
+              <div class="table-cell" data-label="Course">Discrete Math W. Comp Eng Appl</div>
+              <div class="table-cell" data-label="Grade">−</div>
+              <div class="table-cell" data-label="Credits">3.50</div>
+              <div class="table-cell status-planned" data-label="Status">Planned</div>
+            </div>
+            
+            <div class="table-row">
+              <div class="table-cell" data-label="Code">ELEC 274</div>
+              <div class="table-cell" data-label="Course">Computer Architecture</div>
+              <div class="table-cell" data-label="Grade">−</div>
+              <div class="table-cell" data-label="Credits">4.00</div>
+              <div class="table-cell status-planned" data-label="Status">Planned</div>
+            </div>
+            
+            <div class="table-row">
+              <div class="table-cell" data-label="Code">ELEC 279</div>
+              <div class="table-cell" data-label="Course">Object Oriented Programming</div>
+              <div class="table-cell" data-label="Grade">−</div>
+              <div class="table-cell" data-label="Credits">4.00</div>
+              <div class="table-cell status-planned" data-label="Status">Planned</div>
+            </div>
+            
+            <div class="table-row">
+              <div class="table-cell" data-label="Code">ELEC 280</div>
+              <div class="table-cell" data-label="Course">Fund. Of Electromagnetics</div>
+              <div class="table-cell" data-label="Grade">−</div>
+              <div class="table-cell" data-label="Credits">3.75</div>
+              <div class="table-cell status-planned" data-label="Status">Planned</div>
+            </div>
+            
+            <div class="table-row">
+              <div class="table-cell" data-label="Code">ELEC 290</div>
+              <div class="table-cell" data-label="Course">ECE Design and Practice</div>
+              <div class="table-cell" data-label="Grade">−</div>
+              <div class="table-cell" data-label="Credits">5.00</div>
+              <div class="table-cell status-planned" data-label="Status">Planned</div>
+            </div>
+            
+            <div class="table-row">
+              <div class="table-cell" data-label="Code">ELEC 292</div>
+              <div class="table-cell" data-label="Course">Introduction to Data Science</div>
+              <div class="table-cell" data-label="Grade">−</div>
+              <div class="table-cell" data-label="Credits">3.00</div>
+              <div class="table-cell status-planned" data-label="Status">Planned</div>
+            </div>
+          </div>
         </div>
+      </div>
+    </section>
 
-        <div class="collapsible-content">
-          <div class="settings-box">  
-            <div class="settings-row">
-                <span class="settings-text">CMPE 325</span><div class="settings-spacer">−</div>
-                <span class="settings-text">Human-Computer Interaction</span><div class="settings-spacer">−</div>
-                <span class="settings-text">−</span><div class="settings-spacer">−</div>
-                <span class="settings-text">3.00</span><div class="settings-spacer">−</div>
-                <span class="settings-text">In Progress</span>
-            </div>    
+    <!-- Electives section -->
+    <section class="courses-section" aria-labelledby="electives-heading">
+      <div class="section-header">
+        <h2 id="electives-heading" class="section-heading">Electives</h2>
+        <button class="collapse-toggle" aria-expanded="true" aria-controls="electives-content">−</button>
+      </div>
+      
+      <div id="electives-content" class="section-content">
+        <div class="course-table">
+          <div class="table-header">
+            <div class="table-cell">Code</div>
+            <div class="table-cell">Course</div>
+            <div class="table-cell">Grade</div>
+            <div class="table-cell">Credits</div>
+            <div class="table-cell">Status</div>
+          </div>
+          
+          <div class="table-row">
+            <div class="table-cell" data-label="Code">CMPE 325</div>
+            <div class="table-cell" data-label="Course">Human-Computer Interaction</div>
+            <div class="table-cell" data-label="Grade">−</div>
+            <div class="table-cell" data-label="Credits">3.00</div>
+            <div class="table-cell status-in-progress" data-label="Status">In Progress</div>
+          </div>
         </div>
-      </div>       
-    </div>
+      </div>
+    </section>
+  </main>
 
-</div>  
-
-  <script src="script.js"></script>
+  <script>
+    // Simple toggle functionality for collapsible sections
+    document.querySelectorAll('.collapse-toggle').forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        const targetId = toggle.getAttribute('aria-controls');
+        const target = document.getElementById(targetId);
+        
+        toggle.setAttribute('aria-expanded', !expanded);
+        toggle.textContent = expanded ? '+' : '−';
+        target.style.display = expanded ? 'none' : 'block';
+      });
+    });
+    
+    // Update progress bar width based on credits
+    function updateProgressBar() {
+      const totalCredits = 48;
+      const earnedCredits = 16; // This would normally come from your data
+      const progressPercentage = Math.round((earnedCredits / totalCredits) * 100);
+      
+      const progressBar = document.getElementById('progress-bar');
+      progressBar.style.width = `${progressPercentage}%`;
+      progressBar.setAttribute('aria-valuenow', progressPercentage);
+      progressBar.querySelector('.progress-text').textContent = `${progressPercentage}% Complete`;
+    }
+    
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', updateProgressBar);
+  </script>
 </body>
 </html>
